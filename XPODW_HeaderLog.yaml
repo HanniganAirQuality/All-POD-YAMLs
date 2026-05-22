@@ -2615,7 +2615,7 @@ X_Standard:
         sensor: Shinzen MQ footprint
         adc: ADS1115
         adc_mode: single-ended
-        description: Commonly MQ-4 or MQ-131
+        description: Commonly MQ-4 or MQ-131, corrected from previous incorrect address
       PID: 
         unit: ADU
         dtype: uint16_t
