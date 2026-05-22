@@ -16,3 +16,7 @@ Thanks to Izzy for this suggestion! Here we will be tracking each version of the
 | Version       | "Named" Ver.   | Pilot         | Date               | Description & Purpose                		|
 | ------------- | -------------- | ------------- | -------------      | ----------------------------------------------- |
 | V1.0.0      	| Initial Upload | Percy         | May 22, 2026       | Moving documents to central git		     	|
+
+# Feature Request 
+* Verify, update & standardize all Alphasense nomenclature with hardware 
+* Create "global dictionary" that we can pull from for future versions as a standard "word" bank
