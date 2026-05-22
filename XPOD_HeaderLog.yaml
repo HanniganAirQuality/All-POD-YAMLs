@@ -1957,20 +1957,20 @@ XPOD_V4_0_0:
       sensor: MiCS-2611
       adc: ADS1115
       adc_mode: single-ended
-    Alphasense_Aux: 
+    Alphasense_C1: 
       unit: ADU
-      dtype: float
+      dtype: int16_t
       sensor: Alphasense CO-B4
       adc: ADS1115
       adc_mode: differential (0-1)
-      description: MIGHT NEED TO CHANGE IF INCORRECT DIFFERENTIAL - has a multiplier (rylee)
-    Alphasense_Main:
+      description: Differential between channels 0 & 1
+    Alphasense_C2:
       unit: ADU
-      dtype: float
+      dtype: int16_t
       sensor: Alphasense CO-B4
       adc: ADS1115
       adc_mode: differential (2-3)
-      description: MIGHT NEED TO CHANGE IF INCORRECT DIFFERENTIAL - has a multiplier (rylee)
+      description: Differential between channels 2 & 3
     CO2:
       unit: ppm #ALLEGEDLY
       dtype: uint16_t
@@ -2178,20 +2178,20 @@ XPOD_V4_1_0:
       sensor: MiCS-2611
       adc: ADS1115
       adc_mode: single-ended
-    Alphasense_Aux: 
+    Alphasense_C1: 
       unit: ADU
-      dtype: float
+      dtype: int16_t
       sensor: Alphasense CO-B4
       adc: ADS1115
       adc_mode: differential (0-1)
-      description: MIGHT NEED TO CHANGE IF INCORRECT DIFFERENTIAL - has a multiplier (rylee)
-    Alphasense_Main:
+      description: Differential between channels 0 & 1
+    Alphasense_C2:
       unit: ADU
-      dtype: float
+      dtype: int16_t
       sensor: Alphasense CO-B4
       adc: ADS1115
       adc_mode: differential (2-3)
-      description: MIGHT NEED TO CHANGE IF INCORRECT DIFFERENTIAL - has a multiplier (rylee)
+      description: Differential between channels 2 & 3
     CO2:
       unit: ppm #ALLEGEDLY
       dtype: uint16_t
@@ -2403,16 +2403,16 @@ XPOD_V4_1_1:
       sensor: MiCS-2611
       adc: ADS1115
       adc_mode: single-ended
-    Alphasense_Worker: 
+    Alphasense_C1: 
       unit: ADU
-      dtype: float
+      dtype: int16_t
       sensor: Alphasense CO-B4
       adc: ADS1115
       adc_mode: differential (0-1)
       description: Differential between channels 0 & 1
-    Alphasense_Auxiliary:
+    Alphasense_C2:
       unit: ADU
-      dtype: float
+      dtype: int16_t
       sensor: Alphasense CO-B4
       adc: ADS1115
       adc_mode: differential (2-3)
@@ -2557,7 +2557,7 @@ XPOD_V4_1_1:
       description: 10.0um particle count
 XPOD_V4_2_0:
   date: 2026-05-22
-  changelog: Re-adds analog V_in (accidentally removed from V4 rebuild) 
+  changelog: Repairs ADS channels & addresses (previously incorrect for alphasense) 
   SD_fileinfo: 
     DefaultFileConfig: ConfigB
     FileName: XPODID_YYYY_mm_dd
@@ -2630,14 +2630,14 @@ XPOD_V4_2_0:
       adc_mode: single-ended
     Alphasense_Aux: 
       unit: ADU
-      dtype: float
+      dtype: int16_t
       sensor: Alphasense CO-B4
       adc: ADS1115
       adc_mode: differential (0-1)
       description: MIGHT NEED TO CHANGE IF INCORRECT DIFFERENTIAL - has a multiplier (rylee)
     Alphasense_Main:
       unit: ADU
-      dtype: float
+      dtype: int16_t
       sensor: Alphasense CO-B4
       adc: ADS1115
       adc_mode: differential (2-3)
