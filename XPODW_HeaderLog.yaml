@@ -2852,20 +2852,20 @@ X_Crosstalk_Config:
         sensor: MiCS-2611
         adc: ADS1115
         adc_mode: single-ended
-      Alphasense_Aux: 
+      Alphasense_C1: 
         unit: ADU
-        dtype: float
+        dtype: int16_t
         sensor: Alphasense CO-B4
         adc: ADS1115
         adc_mode: differential (0-1)
-        description: MIGHT NEED TO CHANGE IF INCORRECT DIFFERENTIAL - has a multiplier (rylee)
-      Alphasense_Main:
+        description: Differential between channels 0 & 1
+      Alphasense_C2:
         unit: ADU
-        dtype: float
+        dtype: int16_t
         sensor: Alphasense CO-B4
         adc: ADS1115
         adc_mode: differential (2-3)
-        description: MIGHT NEED TO CHANGE IF INCORRECT DIFFERENTIAL - has a multiplier (rylee)
+        description: Differential between channels 2 & 3
       CO2:
         unit: ppm #ALLEGEDLY
         dtype: uint16_t
@@ -3088,20 +3088,20 @@ X_Crosstalk_Config:
         unit: ppm #ALLEGEDLY
         dtype: uint16_t
         sensor: ELT S300-3V
-      Alphasense_Main:
+      Alphasense_C1: 
         unit: ADU
-        dtype: float
-        sensor: Alphasense CO-B4
-        adc: ADS1115
-        adc_mode: differential (2-3)
-        description: MIGHT NEED TO CHANGE IF INCORRECT DIFFERENTIAL - has a multiplier (rylee)
-      Alphasense_Aux: 
-        unit: ADU
-        dtype: float
+        dtype: int16_t
         sensor: Alphasense CO-B4
         adc: ADS1115
         adc_mode: differential (0-1)
-        description: MIGHT NEED TO CHANGE IF INCORRECT DIFFERENTIAL - has a multiplier (rylee)
+        description: Differential between channels 0 & 1
+      Alphasense_C2:
+        unit: ADU
+        dtype: int16_t
+        sensor: Alphasense CO-B4
+        adc: ADS1115
+        adc_mode: differential (2-3)
+        description: Differential between channels 2 & 3
       Relayed_MiniPOD_Crosstalk: 
         unit: NA
         dtype: string
@@ -3176,20 +3176,20 @@ X_Crosstalk_Config:
         sensor: MiCS-2611
         adc: ADS1115
         adc_mode: single-ended
-      Alphasense_Aux: 
+      Alphasense_C1: 
         unit: ADU
-        dtype: float
+        dtype: int16_t
         sensor: Alphasense CO-B4
         adc: ADS1115
         adc_mode: differential (0-1)
-        description: MIGHT NEED TO CHANGE IF INCORRECT DIFFERENTIAL - has a multiplier (rylee)
-      Alphasense_Main:
+        description: Differential between channels 0 & 1
+      Alphasense_C2:
         unit: ADU
-        dtype: float
+        dtype: int16_t
         sensor: Alphasense CO-B4
         adc: ADS1115
         adc_mode: differential (2-3)
-        description: MIGHT NEED TO CHANGE IF INCORRECT DIFFERENTIAL - has a multiplier (rylee)
+        description: Differential between channels 2 & 3
       CO2:
         unit: ppm #ALLEGEDLY
         dtype: uint16_t
@@ -3412,20 +3412,20 @@ X_Crosstalk_Config:
         unit: ppm #ALLEGEDLY
         dtype: uint16_t
         sensor: ELT S300-3V
-      Alphasense_Main:
+      Alphasense_C1: 
         unit: ADU
-        dtype: float
-        sensor: Alphasense CO-B4
-        adc: ADS1115
-        adc_mode: differential (2-3)
-        description: MIGHT NEED TO CHANGE IF INCORRECT DIFFERENTIAL - has a multiplier (rylee)
-      Alphasense_Aux: 
-        unit: ADU
-        dtype: float
+        dtype: int16_t
         sensor: Alphasense CO-B4
         adc: ADS1115
         adc_mode: differential (0-1)
-        description: MIGHT NEED TO CHANGE IF INCORRECT DIFFERENTIAL - has a multiplier (rylee)
+        description: Differential between channels 0 & 1
+      Alphasense_C2:
+        unit: ADU
+        dtype: int16_t
+        sensor: Alphasense CO-B4
+        adc: ADS1115
+        adc_mode: differential (2-3)
+        description: Differential between channels 2 & 3
       Relayed_MiniPOD_Crosstalk: 
         unit: NA
         dtype: string
@@ -3501,20 +3501,20 @@ X_Crosstalk_Config:
         sensor: MiCS-2611
         adc: ADS1115
         adc_mode: single-ended
-      Alphasense_Aux: 
+      Alphasense_C1: 
         unit: ADU
-        dtype: float
+        dtype: int16_t
         sensor: Alphasense CO-B4
         adc: ADS1115
         adc_mode: differential (0-1)
-        description: MIGHT NEED TO CHANGE IF INCORRECT DIFFERENTIAL - has a multiplier (rylee)
-      Alphasense_Main:
+        description: Differential between channels 0 & 1
+      Alphasense_C2:
         unit: ADU
-        dtype: float
+        dtype: int16_t
         sensor: Alphasense CO-B4
         adc: ADS1115
         adc_mode: differential (2-3)
-        description: MIGHT NEED TO CHANGE IF INCORRECT DIFFERENTIAL - has a multiplier (rylee)
+        description: Differential between channels 2 & 3
       CO2:
         unit: ppm #ALLEGEDLY
         dtype: uint16_t
@@ -3737,20 +3737,20 @@ X_Crosstalk_Config:
         unit: ppm #ALLEGEDLY
         dtype: uint16_t
         sensor: ELT S300-3V
-      Alphasense_Main:
+      Alphasense_C1: 
         unit: ADU
-        dtype: float
-        sensor: Alphasense CO-B4
-        adc: ADS1115
-        adc_mode: differential (2-3)
-        description: MIGHT NEED TO CHANGE IF INCORRECT DIFFERENTIAL - has a multiplier (rylee)
-      Alphasense_Aux: 
-        unit: ADU
-        dtype: float
+        dtype: int16_t
         sensor: Alphasense CO-B4
         adc: ADS1115
         adc_mode: differential (0-1)
-        description: MIGHT NEED TO CHANGE IF INCORRECT DIFFERENTIAL - has a multiplier (rylee)
+        description: Differential between channels 0 & 1
+      Alphasense_C2:
+        unit: ADU
+        dtype: int16_t
+        sensor: Alphasense CO-B4
+        adc: ADS1115
+        adc_mode: differential (2-3)
+        description: Differential between channels 2 & 3
       Relayed_MiniPOD_Crosstalk: 
         unit: NA
         dtype: string
@@ -4062,20 +4062,20 @@ X_Crosstalk_Config:
         unit: ppm #ALLEGEDLY
         dtype: uint16_t
         sensor: ELT S300-3V
-      Alphasense_Main:
+      Alphasense_C1: 
         unit: ADU
-        dtype: float
-        sensor: Alphasense CO-B4
-        adc: ADS1115
-        adc_mode: differential (2-3)
-        description: MIGHT NEED TO CHANGE IF INCORRECT DIFFERENTIAL - has a multiplier (rylee)
-      Alphasense_Aux: 
-        unit: ADU
-        dtype: float
+        dtype: int16_t
         sensor: Alphasense CO-B4
         adc: ADS1115
         adc_mode: differential (0-1)
-        description: MIGHT NEED TO CHANGE IF INCORRECT DIFFERENTIAL - has a multiplier (rylee)
+        description: Differential between channels 0 & 1
+      Alphasense_C2:
+        unit: ADU
+        dtype: int16_t
+        sensor: Alphasense CO-B4
+        adc: ADS1115
+        adc_mode: differential (2-3)
+        description: Differential between channels 2 & 3
       Relayed_MiniPOD_Crosstalk: 
         unit: NA
         dtype: string
