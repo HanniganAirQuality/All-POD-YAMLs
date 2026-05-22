@@ -13,9 +13,11 @@ If you want to understand our lab's YAML format standard: [Code Formatting](http
 
 # Update Tracker
 Thanks to Izzy for this suggestion! Here we will be tracking each version of the firmware.
+** UNLIKE OTHER REPOSITORIES, THIS ONE WILL NOT ARCHIVE PREVIOUS VERSIONS!! PLEASE PROCEED WITH CAUTION & KEEP AN EYE ON WHEN YOU ARE DOWNLOADING!!!**
 | Version       | "Named" Ver.   | Pilot         | Date               | Description & Purpose                		|
 | ------------- | -------------- | ------------- | -------------      | ----------------------------------------------- |
 | V1.0.0      	| Initial Upload | Percy         | May 22, 2026       | Moving documents to central git		     	|
+| V1.1.0     	| AS Standard, X | Percy         | May 22, 2026       | Beginning to standardize Alphasense channel labeling in XPOD YAML |
 
 # Feature Request 
 * Verify, update & standardize all Alphasense nomenclature with hardware 
