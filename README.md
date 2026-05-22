@@ -10,3 +10,9 @@ We go much more into how these files are used in our lab in this wiki pages. Tho
 If you want to use the YAML for data import & variable naming: [Parsing YAML Header Files!](https://github.com/HanniganAirQuality/HAQLab-Dev/wiki/Parsing-YAML-Header-Files!) 
 
 If you want to understand our lab's YAML format standard: [Code Formatting](https://github.com/HanniganAirQuality/HAQLab-Dev/wiki/Code-Formatting)
+
+# Update Tracker
+Thanks to Izzy for this suggestion! Here we will be tracking each version of the firmware.
+| Version       | "Named" Ver.   | Pilot         | Date               | Description & Purpose                		|
+| ------------- | -------------- | ------------- | -------------      | ----------------------------------------------- |
+| V1.0.0      	| Initial Upload | Percy         | May 22, 2026       | Moving documents to central git		     	|
