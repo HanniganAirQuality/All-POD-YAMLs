@@ -2627,21 +2627,23 @@ XPOD_V4_2_0:
       dtype: uint16_t
       sensor: MiCS-2611
       adc: ADS1115
-      adc_mode: single-ended
-    Alphasense_Aux: 
+      adc_mode: single-ended      
+    Alphasense_Worker: 
+      previous_label: Alphasense_C1
       unit: ADU
       dtype: int16_t
       sensor: Alphasense CO-B4
       adc: ADS1115
       adc_mode: differential (0-1)
-      description: MIGHT NEED TO CHANGE IF INCORRECT DIFFERENTIAL - has a multiplier (rylee)
-    Alphasense_Main:
+      description: Differential between 0 & 1 (used to be labeled "aux" or "auxiliary" incorrectly, which is why we changed prev. label to C2)
+    Alphasense_Auxiliary:
+      previous_label: Alphasense_C2
       unit: ADU
       dtype: int16_t
       sensor: Alphasense CO-B4
       adc: ADS1115
       adc_mode: differential (2-3)
-      description: MIGHT NEED TO CHANGE IF INCORRECT DIFFERENTIAL - has a multiplier (rylee)
+      description: Differential between 2 & 3 (used to be labeled "main" or "worker" incorrectly, which is why we changed prev. label to C1)
     CO2:
       unit: ppm #ALLEGEDLY
       dtype: uint16_t
