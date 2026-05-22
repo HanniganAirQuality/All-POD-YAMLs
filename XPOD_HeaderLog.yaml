@@ -2403,6 +2403,231 @@ XPOD_V4_1_1:
       sensor: MiCS-2611
       adc: ADS1115
       adc_mode: single-ended
+    Alphasense_Worker: 
+      unit: ADU
+      dtype: float
+      sensor: Alphasense CO-B4
+      adc: ADS1115
+      adc_mode: differential (0-1)
+      description: Differential between channels 0 & 1
+    Alphasense_Auxiliary:
+      unit: ADU
+      dtype: float
+      sensor: Alphasense CO-B4
+      adc: ADS1115
+      adc_mode: differential (2-3)
+      description: Differential between channels 2 & 3
+    CO2:
+      unit: ppm #ALLEGEDLY
+      dtype: uint16_t
+      sensor: ELT S300-3V
+    Temperature:
+      unit: Celsius
+      dtype: float
+      sensor: BME680
+    Pressure:
+      unit: Hectopascals (hPa)
+      dtype: float
+      sensor: BME680
+    Relative_Humidity:
+      unit: "%RH"
+      dtype: float
+      sensor: BME680
+    BME680_Gas_Resistance:
+      unit: "kiloohms (kOhms)"
+      dtype: uint32_t
+      sensor: BME680
+      description: Raw gas resistance from BME680 VOC heater element; interpret
+        relative to baseline only, not as absolute VOC concentration
+    QS1_C1: 
+      unit: ADU
+      dtype: int16_t
+      sensor: Alphasense B4
+      adc: MCP342x
+      adc_mode: differential 
+      description: Quadstat module, Alphasense B4 sensor 1, channel 1
+    QS1_C2: 
+      unit: ADU
+      dtype: int16_t
+      sensor: Alphasense B4
+      adc: MCP342x
+      adc_mode: differential 
+      description: Quadstat module, Alphasense B4 sensor 1, channel 2
+    QS2_C1:
+      unit: ADU
+      dtype: int16_t
+      sensor: Alphasense B4
+      adc: MCP342x
+      adc_mode: differential 
+      description: Quadstat module, Alphasense B4 sensor 2, channel 1
+    QS2_C2:
+      unit: ADU
+      dtype: int16_t
+      sensor: Alphasense B4
+      adc: MCP342x
+      adc_mode: differential 
+      description: Quadstat module, Alphasense B4 sensor 2, channel 2
+    QS3_C1:
+      unit: ADU
+      dtype: int16_t
+      sensor: Alphasense B4
+      adc: MCP342x
+      adc_mode: differential 
+      description: Quadstat module, Alphasense B4 sensor 3, channel 1
+    QS3_C2:
+      unit: ADU
+      dtype: int16_t
+      sensor: Alphasense B4
+      adc: MCP342x
+      adc_mode: differential 
+      description: Quadstat module, Alphasense B4 sensor 3, channel 2
+    QS4_C1:
+      unit: ADU
+      dtype: int16_t
+      sensor: Alphasense B4
+      adc: MCP342x
+      adc_mode: differential 
+      description: Quadstat module, Alphasense B4 sensor 4, channel 1
+    QS4_C2:
+      unit: ADU
+      dtype: int16_t
+      sensor: Alphasense B4
+      adc: MCP342x
+      adc_mode: differential 
+      description: Quadstat module, Alphasense B4 sensor 4, channel 2
+    PM10_ENV: 
+      unit: ug/m^3 #ALLEGEDLY
+      dtype: uint16_t
+      sensor: Plantower PMS5003
+      description: Environmental PM1.0 concentration
+    PM25_ENV: 
+      unit: ug/m^3 #ALLEGEDLY
+      dtype: uint16_t
+      sensor: Plantower PMS5003
+      description: Environmental PM2.5 concentration
+    PM100_ENV: 
+      unit: ug/m^3 #ALLEGEDLY
+      dtype: uint16_t
+      sensor: Plantower PMS5003
+      description: Environmental PM10.0 concentration
+    PM10_STD: 
+      unit: ug/m^3 #ALLEGEDLY
+      dtype: uint16_t
+      sensor: Plantower PMS5003
+      description: Standard PM1.0 concentration
+    PM25_STD: 
+      unit: ug/m^3 #ALLEGEDLY
+      dtype: uint16_t
+      sensor: Plantower PMS5003
+      description: Standard PM2.5 concentration
+    PM100_STD: 
+      unit: ug/m^3 #ALLEGEDLY
+      dtype: uint16_t
+      sensor: Plantower PMS5003
+      description: Standard PM10.0 concentration
+    PM03um: 
+      unit: particles #ALLEGEDLY
+      dtype: uint16_t
+      sensor: Plantower PMS5003
+      description: 0.3um particle count
+    PM05um: 
+      unit: particles #ALLEGEDLY
+      dtype: uint16_t
+      sensor: Plantower PMS5003
+      description: 0.5um particle count
+    PM10um:
+      unit: particles #ALLEGEDLY
+      dtype: uint16_t
+      sensor: Plantower PMS5003
+      description: 1.0um particle count
+    PM25um: 
+      unit: particles #ALLEGEDLY
+      dtype: uint16_t
+      sensor: Plantower PMS5003
+      description: 2.5um particle count
+    PM50um: 
+      unit: particles #ALLEGEDLY
+      dtype: uint16_t
+      sensor: Plantower PMS5003
+      description: 5.0um particle count
+    PM100um: 
+      unit: particles #ALLEGEDLY
+      dtype: uint16_t
+      sensor: Plantower PMS5003
+      description: 10.0um particle count
+XPOD_V4_2_0:
+  date: 2026-05-22
+  changelog: Re-adds analog V_in (accidentally removed from V4 rebuild) 
+  SD_fileinfo: 
+    DefaultFileConfig: ConfigB
+    FileName: XPODID_YYYY_mm_dd
+    FileType: .CSV
+  SD:
+    DateTime:
+      unit: timestamp
+      dtype: string
+      format: "YYYY-MM-ddThh:mm:ss"
+      sensor: DS3231
+    Voltage_in:
+      unit: Volts
+      dtype: float
+      adc: Arduino MEGA A0
+      adc_mode: single-ended
+    Fig1:
+      unit: ADU
+      dtype: uint16_t
+      sensor: Figaro TGS footprint 1, sensor (Often TGS 2600)
+      adc: ADS1115
+      adc_mode: single-ended
+    Fig2:
+      unit: ADU
+      dtype: uint16_t
+      sensor: Figaro TGS footprint 2, sensor (Often TGS 2602)
+      adc: ADS1115
+      adc_mode: single-ended
+    Fig3:
+      unit: ADU
+      dtype: uint16_t
+      sensor: Figaro TGS footprint 3, sensor 
+      adc: ADS1115
+      adc_mode: single-ended
+    Fig3_heater:
+      unit: ADU
+      dtype: uint16_t
+      sensor: Figaro TGS footprint 3, heater
+      adc: ADS1115
+      adc_mode: single-ended
+    Fig4:
+      unit: ADU
+      dtype: uint16_t
+      sensor: Figaro TGS footprint 4, sensor
+      adc: ADS1115
+      adc_mode: single-ended
+    Fig4_heater:
+      unit: ADU
+      dtype: uint16_t
+      sensor: Figaro TGS footprint 4, heater
+      adc: ADS1115
+      adc_mode: single-ended
+    MQ:
+      unit: ADU
+      dtype: int16_t
+      sensor: Shinzen MQ footprint
+      adc: ADS1115
+      adc_mode: single-ended
+      description: Commonly MQ-4 or MQ-131
+    PID: 
+      unit: ADU
+      dtype: uint16_t
+      sensor: piD-TECH eVx 
+      adc: ADS1115
+      adc_mode: single-ended
+    MiCS2611_Ozone:
+      unit: ADU
+      dtype: uint16_t
+      sensor: MiCS-2611
+      adc: ADS1115
+      adc_mode: single-ended
     Alphasense_Aux: 
       unit: ADU
       dtype: float
