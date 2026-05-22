@@ -109,7 +109,7 @@ XPOD_V3_1_0:
       adc: ADS1115
       adc_mode: differential (2-3)
       description: Differential between channels 2 & 3
-    CO2:
+    ELT_CO2:
       unit: ppm #ALLEGEDLY
       dtype: uint16_t
       sensor: ELT S300-3V
@@ -352,7 +352,7 @@ XPOD_V3_1_2:
       adc: ADS1115
       adc_mode: differential (2-3)
       description: Differential between channels 2 & 3
-    CO2:
+    ELT_CO2:
       unit: ppm #ALLEGEDLY
       dtype: uint16_t
       sensor: ELT S300-3V
@@ -674,7 +674,7 @@ XPOD_V3_2_0:
       adc: ADS1115
       adc_mode: differential (2-3)
       description: Differential between channels 2 & 3
-    CO2:
+    ELT_CO2:
       unit: ppm #ALLEGEDLY
       dtype: uint16_t
       sensor: ELT S300-3V
@@ -996,7 +996,7 @@ XPOD_V3_2_1:
       adc: ADS1115
       adc_mode: differential (2-3)
       description: Differential between channels 2 & 3
-    CO2:
+    ELT_CO2:
       unit: ppm #ALLEGEDLY
       dtype: uint16_t
       sensor: ELT S300-3V
@@ -1318,7 +1318,7 @@ XPOD_V3_2_2:
       adc: ADS1115
       adc_mode: differential (2-3)
       description: Differential between channels 2 & 3
-    CO2:
+    ELT_CO2:
       unit: ppm #ALLEGEDLY
       dtype: uint16_t
       sensor: ELT S300-3V
@@ -1534,7 +1534,7 @@ XPOD_V3_2_3:
       adc: ADS1115
       adc_mode: differential (2-3)
       description: Differential between channels 2 & 3
-    CO2:
+    ELT_CO2:
       unit: ppm #ALLEGEDLY
       dtype: uint16_t
       sensor: ELT S300-3V
@@ -1753,7 +1753,7 @@ XPOD_V3_4_0:
       adc: ADS1115
       adc_mode: differential (2-3)
       description: Differential between channels 2 & 3
-    CO2:
+    ELT_CO2:
       unit: ppm #ALLEGEDLY
       dtype: uint16_t
       sensor: ELT S300-3V
@@ -1971,7 +1971,7 @@ XPOD_V4_0_0:
       adc: ADS1115
       adc_mode: differential (2-3)
       description: Differential between channels 2 & 3
-    CO2:
+    ELT_CO2:
       unit: ppm #ALLEGEDLY
       dtype: uint16_t
       sensor: ELT S300-3V
@@ -2192,7 +2192,7 @@ XPOD_V4_1_0:
       adc: ADS1115
       adc_mode: differential (2-3)
       description: Differential between channels 2 & 3
-    CO2:
+    ELT_CO2:
       unit: ppm #ALLEGEDLY
       dtype: uint16_t
       sensor: ELT S300-3V
@@ -2417,7 +2417,7 @@ XPOD_V4_1_1:
       adc: ADS1115
       adc_mode: differential (2-3)
       description: Differential between channels 2 & 3
-    CO2:
+    ELT_CO2:
       unit: ppm #ALLEGEDLY
       dtype: uint16_t
       sensor: ELT S300-3V
@@ -2644,7 +2644,7 @@ XPOD_V4_2_0:
       adc: ADS1115
       adc_mode: differential (2-3)
       description: Differential between 2 & 3 (used to be labeled "main" or "worker" incorrectly, which is why we changed prev. label to C1)
-    CO2:
+    ELT_CO2:
       unit: ppm #ALLEGEDLY
       dtype: uint16_t
       sensor: ELT S300-3V
