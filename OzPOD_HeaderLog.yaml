@@ -224,20 +224,18 @@ OzPOD_V3:
       sensor: MQ131
       adc: ADS1115
       adc_mode: single-ended
-    Alphasense_Main:
+    Alphasense_Auxiliary:
       unit: ADU
       dtype: int16_t
-      sensor: Alphasense B4
+      sensor: Alphasense CO-B4
       adc: ADS1115
       adc_mode: differential (2-3)
-      description: Firmware read wrong differential pair in V1-V3; corrected in V4
-    Alphasense_Aux:
+    Alphasense_Worker: 
       unit: ADU
       dtype: int16_t
-      sensor: Alphasense B4
+      sensor: Alphasense CO-B4
       adc: ADS1115
       adc_mode: differential (0-1)
-      description: Firmware read wrong differential pair in V1-V3; corrected in V4
     Temperature:
       unit: Celsius
       dtype: float
@@ -261,10 +259,10 @@ OzPOD_V3:
     MQ131_Ozone:
       unit: ADU
       dtype: uint16_t
-    Alphasense_Aux:
+    Alphasense_Worker:
       unit: ADU
       dtype: int16_t
-    Alphasense_Main:
+    Alphasense_Auxiliary:
       unit: ADU
       dtype: int16_t
     Temperature:
@@ -301,20 +299,18 @@ OzPOD_V4:
       sensor: MQ131
       adc: ADS1115
       adc_mode: single-ended
-    Alphasense_Worker:
+    Alphasense_Worker: 
       unit: ADU
       dtype: int16_t
-      sensor: Alphasense B4
+      sensor: Alphasense CO-B4
       adc: ADS1115
       adc_mode: differential (0-1)
-      description: Worker electrode; firmware corrected to read proper differential pair (0-1) in V4, renamed from Alphasense_Main
     Alphasense_Auxiliary:
       unit: ADU
       dtype: int16_t
-      sensor: Alphasense B4
+      sensor: Alphasense CO-B4
       adc: ADS1115
       adc_mode: differential (2-3)
-      description: Auxiliary electrode; firmware corrected to read proper differential pair (2-3) in V4, renamed from Alphasense_Aux
     Temperature:
       unit: Celsius
       dtype: float
