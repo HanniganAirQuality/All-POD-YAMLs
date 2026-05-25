@@ -59,9 +59,9 @@ DateTime:
   unit: timestamp
   dtype: string
   format: "YYYY-MM-ddThh:mm:ss"
-  sensor: DS3231
+  sensor: DS3231, PCF8523
   monitors: [XPOD, XPODW, YPOD, LPOD, OzPOD, MiniPOD]
-  description: ISO 8601 timestamp from DS3231 RTC
+  description: ISO 8601 timestamp from DS3231 or PCF8523 RTC
   legacy_aliases:
     - Date   # YPOD V3.1.2–V3.2.0; split into separate Date and Time fields
     - Time   # YPOD V3.1.2–V3.2.0; split into separate Date and Time fields
