@@ -71,13 +71,13 @@ LPOD_V1_0_0:
       adc_mode: single-ended
     Alphasense_C1: 
       unit: ADU
-      dtype: float
+      dtype: int16_t
       sensor: Alphasense CO-B4
       adc: ADS1115
       adc_mode: single-ended (0)
     Alphasense_C2:
       unit: ADU
-      dtype: float
+      dtype: int16_t
       sensor: Alphasense CO-B4
       adc: ADS1115
       adc_mode: single-ended (2)
@@ -134,13 +134,13 @@ LPOD_V1_1_0:
       adc_mode: single-ended
     Alphasense_C1: 
       unit: ADU
-      dtype: float
+      dtype: int16_t
       sensor: Alphasense CO-B4
       adc: ADS1115
       adc_mode: single-ended (0)
     Alphasense_C2:
       unit: ADU
-      dtype: float
+      dtype: int16_t
       sensor: Alphasense CO-B4
       adc: ADS1115
       adc_mode: single-ended (2)
@@ -197,13 +197,13 @@ LPOD_Particle_POC:
       adc_mode: single-ended
     Alphasense_C1: 
       unit: ADU
-      dtype: float
+      dtype: int16_t
       sensor: Alphasense CO-B4
       adc: ADS1115
       adc_mode: single-ended (0)
     Alphasense_C2:
       unit: ADU
-      dtype: float
+      dtype: int16_t
       sensor: Alphasense CO-B4
       adc: ADS1115
       adc_mode: single-ended (2)
@@ -277,13 +277,13 @@ LPOD_V4:
       adc_mode: single-ended
     Alphasense_C1: 
       unit: ADU
-      dtype: float
+      dtype: int16_t
       sensor: Alphasense CO-B4
       adc: ADS1115
       adc_mode: single-ended (0)
     Alphasense_C2:
       unit: ADU
-      dtype: float
+      dtype: int16_t
       sensor: Alphasense CO-B4
       adc: ADS1115
       adc_mode: single-ended (2)
@@ -326,13 +326,13 @@ LPOD_V4:
       adc_mode: single-ended
     Alphasense_C1: 
       unit: ADU
-      dtype: float
+      dtype: int16_t
       sensor: Alphasense CO-B4
       adc: ADS1115
       adc_mode: single-ended (0)
     Alphasense_C2:
       unit: ADU
-      dtype: float
+      dtype: int16_t
       sensor: Alphasense CO-B4
       adc: ADS1115
       adc_mode: single-ended (2)
@@ -394,13 +394,13 @@ LPOD_V5:
       adc_mode: single-ended
     Alphasense_C1: 
       unit: ADU
-      dtype: float
+      dtype: int16_t
       sensor: Alphasense CO-B4
       adc: ADS1115
       adc_mode: single-ended (0)
     Alphasense_C2:
       unit: ADU
-      dtype: float
+      dtype: int16_t
       sensor: Alphasense CO-B4
       adc: ADS1115
       adc_mode: single-ended (2)
@@ -443,13 +443,13 @@ LPOD_V5:
       adc_mode: single-ended
     Alphasense_C1: 
       unit: ADU
-      dtype: float
+      dtype: int16_t
       sensor: Alphasense CO-B4
       adc: ADS1115
       adc_mode: single-ended (0)
     Alphasense_C2:
       unit: ADU
-      dtype: float
+      dtype: int16_t
       sensor: Alphasense CO-B4
       adc: ADS1115
       adc_mode: single-ended (2)
@@ -511,13 +511,13 @@ LPOD_V6:
       adc_mode: single-ended
     Alphasense_C1: 
       unit: ADU
-      dtype: float
+      dtype: int16_t
       sensor: Alphasense CO-B4
       adc: ADS1115
       adc_mode: single-ended (0)
     Alphasense_C2:
       unit: ADU
-      dtype: float
+      dtype: int16_t
       sensor: Alphasense CO-B4
       adc: ADS1115
       adc_mode: single-ended (2)
@@ -560,13 +560,13 @@ LPOD_V6:
       adc_mode: single-ended    
     Alphasense_C2:
       unit: ADU
-      dtype: float
+      dtype: int16_t
       sensor: Alphasense CO-B4
       adc: ADS1115
       adc_mode: single-ended (2)
     Alphasense_C1: 
       unit: ADU
-      dtype: float
+      dtype: int16_t
       sensor: Alphasense CO-B4
       adc: ADS1115
       adc_mode: single-ended (0)
@@ -616,18 +616,20 @@ LPOD_V7:
       sensor: Figaro TGS footprint 3
       adc: ADS1115
       adc_mode: single-ended
-    Alphasense_Auxiliary:
+    Alphasense_Aux:
       unit: ADU
-      dtype: float
+      dtype: uint16_t
       sensor: Alphasense CO-B4
       adc: ADS1115
       adc_mode: differential (2-3)
-    Alphasense_Worker: 
+      description: have not fixed neg values yet
+    Alphasense_Main: 
       unit: ADU
-      dtype: float
+      dtype: uint16_t
       sensor: Alphasense CO-B4
       adc: ADS1115
       adc_mode: differential (0-1)
+      description: have not fixed neg values yet
     Temperature:
       unit: Celsius
       dtype: float
@@ -665,15 +667,15 @@ LPOD_V7:
       sensor: Figaro TGS footprint 3
       adc: ADS1115
       adc_mode: single-ended    
-    Alphasense_Worker: 
+    Alphasense_Main: 
       unit: ADU
-      dtype: float
+      dtype: int16_t
       sensor: Alphasense CO-B4
       adc: ADS1115
       adc_mode: differential (0-1)
-    Alphasense_Auxiliary:
+    Alphasense_Aux:
       unit: ADU
-      dtype: float
+      dtype: int16_t
       sensor: Alphasense CO-B4
       adc: ADS1115
       adc_mode: differential (2-3)
