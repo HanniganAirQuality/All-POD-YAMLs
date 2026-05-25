@@ -1,0 +1,1083 @@
+# ==============================================================================
+# HAQLab Low-Cost Sensing Fleet — Sensor Dictionary
+# ==============================================================================
+# description: Canonical reference for all header fields used across the fleet.
+#              Per-monitor HeaderLog YAMLs define version history and write order.
+#              This file defines what each field IS — units, dtype, sensor IC,
+#              and known legacy aliases.
+# author: Percy Smith
+# date: 2026-05-25
+# ==============================================================================
+#
+# HOW TO USE THIS FILE
+#   - Each entry is the CANONICAL current name for a field.
+#   - legacy_aliases: lists retired names that appear in older firmware versions.
+#   - status: one of [canonical, legacy, intermediate]
+#       canonical    — correct name, use in all new firmware
+#       intermediate — transitional name, still present in some active versions
+#       legacy       — known-bad or retired, document only, do not use
+#   - monitors: which POD platforms this field appears on (any version)
+#   - introduced: firmware version where canonical name first appeared
+#
+# NOMENCLATURE RULES (applied fleet-wide)
+#   - Full words preferred over abbreviations (Temperature not T, Pressure not P)
+#   - Sensor-prefixed where multiple sensors report the same measurand
+#     (e.g. MiCS2611_Ozone, MQ131_Ozone, ELT_CO2)
+#   - PascalCase for compound names; sensor model names preserved as-is
+#   - Hardware port assignments are YAML properties only, not embedded in header names
+#
+# ==============================================================================
+# SECTIONS
+#   1.  Timestamp & Identity
+#   2.  Power
+#   3.  BME680 — Temperature, Pressure, Humidity, Gas Resistance
+#   4.  BMP180 — Temperature, Pressure (YPOD legacy)
+#   5.  SHT25 — Temperature, Humidity (YPOD legacy)
+#   6.  Figaro TGS — VOC/Gas (slot-based)
+#   7.  Alphasense B4 — Electrochemical (canonical & legacy taxonomy)
+#   8.  Alphasense Quadstat Module (MCP342x)
+#   9.  ELT S300-3V — CO2
+#   10. MiCS-2611 — Ozone
+#   11. MQ131 — Ozone
+#   12. MQ Footprint — Generic
+#   13. piD-TECH eVx — PID VOC
+#   14. Plantower PMS5003 — Particulate Matter
+#   15. OPC-R2 — Optical Particle Counter
+#   16. Meteorological — Wind Speed & Direction
+#   17. Derived / Calibrated Outputs (YPOD)
+#   18. Crosstalk / Relay Fields
+#   19. YPOD Legacy / Infrastructure Fields
+# ==============================================================================
+
+
+# ==============================================================================
+# 1. TIMESTAMP & IDENTITY
+# ==============================================================================
+
+DateTime:
+  status: canonical
+  unit: timestamp
+  dtype: string
+  format: "YYYY-MM-ddThh:mm:ss"
+  sensor: DS3231
+  monitors: [XPOD, XPODW, YPOD, LPOD, OzPOD, MiniPOD]
+  description: ISO 8601 timestamp from DS3231 RTC
+  legacy_aliases:
+    - Date   # YPOD V3.1.2–V3.2.0; split into separate Date and Time fields
+    - Time   # YPOD V3.1.2–V3.2.0; split into separate Date and Time fields
+
+# Cellular-decomposed timestamp fields (XPODW only)
+# These replace DateTime in the cellular publish string for XPODW
+DT_Hours:
+  status: canonical
+  unit: hours
+  dtype: int
+  sensor: DS3231
+  monitors: [XPODW]
+  description: Hour component of DateTime, used in cellular publish only
+
+DT_Minutes:
+  status: canonical
+  unit: minutes
+  dtype: int
+  sensor: DS3231
+  monitors: [XPODW]
+  description: Minute component of DateTime, used in cellular publish only
+
+DT_Seconds:
+  status: canonical
+  unit: seconds
+  dtype: int
+  sensor: DS3231
+  monitors: [XPODW]
+  description: Second component of DateTime, used in cellular publish only
+  notes: >
+    KNOWN BUG in XPODW V5W.1.1: unit was incorrectly written as "minutes"
+    in the YAML. The field is seconds. Corrected in dictionary.
+
+
+# ==============================================================================
+# 2. POWER
+# ==============================================================================
+
+Voltage_in:
+  status: canonical
+  unit: Volts
+  dtype: float
+  adc: Arduino MEGA A0
+  adc_mode: single-ended
+  monitors: [XPOD, XPODW]
+  description: Input voltage to the XPOD. Not present on V6M PCB (no V_in channel).
+    Added back in XPOD V4.1.1 for V4 PCBs.
+
+
+# ==============================================================================
+# 3. BME680 — TEMPERATURE, PRESSURE, HUMIDITY, GAS RESISTANCE
+# ==============================================================================
+
+Temperature:
+  status: canonical
+  unit: Celsius
+  dtype: float
+  sensor: BME680
+  monitors: [XPOD, XPODW, YPOD, LPOD, OzPOD]
+
+Pressure:
+  status: canonical
+  unit: Hectopascals (hPa)
+  dtype: float
+  sensor: BME680
+  monitors: [XPOD, XPODW, YPOD, LPOD, OzPOD]
+  notes: >
+    UNIT CONFLICT IN OLDER FILES: LPOD and OzPOD HeaderLogs use "Pascals"
+    as the unit string. BME680 natively outputs hPa. Canonical unit is hPa.
+    LPOD and OzPOD HeaderLogs should be updated to reflect this.
+
+Relative_Humidity:
+  status: canonical
+  unit: "%RH"
+  dtype: float
+  sensor: BME680
+  monitors: [XPOD, XPODW, YPOD, LPOD, OzPOD]
+
+BME680_Gas_Resistance:
+  status: canonical
+  unit: kiloohms (kOhms)
+  dtype: uint32_t
+  sensor: BME680
+  monitors: [XPOD, XPODW, LPOD, OzPOD]
+  description: >
+    Raw gas resistance from BME680 VOC heater element. Interpret relative
+    to a baseline only — do not treat as absolute VOC concentration.
+  notes: >
+    UNIT CONFLICT IN OLDER FILES: LPOD and OzPOD HeaderLogs use "Ohms".
+    XPOD V4.2+ uses "kiloohms (kOhms)". Canonical unit is kOhms.
+    LPOD and OzPOD HeaderLogs should be updated to reflect this.
+
+
+# ==============================================================================
+# 4. BMP180 — TEMPERATURE, PRESSURE (YPOD LEGACY)
+# ==============================================================================
+
+BME180_Temperature:
+  status: legacy
+  unit: Celsius
+  dtype: double
+  sensor: BMP180
+  monitors: [YPOD]
+  description: BMP180 temperature output. Error code -99 on read failure.
+    Replaced by BME680 Temperature in later YPOD versions.
+
+BME180_Pressure:
+  status: legacy
+  unit: millibar
+  dtype: double
+  sensor: BMP180
+  monitors: [YPOD]
+  description: BMP180 pressure output. Error code -99 on read failure.
+    Replaced by BME680 Pressure in later YPOD versions.
+
+
+# ==============================================================================
+# 5. SHT25 — TEMPERATURE, HUMIDITY (YPOD LEGACY)
+# ==============================================================================
+
+SHT25_Temperature:
+  status: legacy
+  unit: Celsius
+  dtype: float
+  sensor: SHT25
+  monitors: [YPOD]
+  description: Temperature computed from SHT25 raw output via conversion equation.
+
+SHT25_Humidity:
+  status: legacy
+  unit: "%RH"
+  dtype: float
+  sensor: SHT25
+  monitors: [YPOD]
+  description: Relative humidity computed from SHT25 raw output via conversion equation.
+
+
+# ==============================================================================
+# 6. FIGARO TGS — VOC/GAS (SLOT-BASED)
+# ==============================================================================
+# Figaro TGS footprint slots are numbered 1-4. The sensor installed in each
+# slot varies by deployment. XPOD and LPOD use generic slot names (Fig1-Fig3).
+# YPOD uses sensor-specific names (Fig2600, Fig2602).
+# Heater channels are logged separately where applicable.
+# ==============================================================================
+
+Fig1:
+  status: canonical
+  unit: ADU
+  dtype: uint16_t
+  sensor: "Figaro TGS footprint 1 (commonly TGS2600)"
+  adc: ADS1115
+  adc_mode: single-ended
+  monitors: [XPOD, XPODW, LPOD]
+
+Fig2:
+  status: canonical
+  unit: ADU
+  dtype: uint16_t
+  sensor: "Figaro TGS footprint 2 (commonly TGS2602)"
+  adc: ADS1115
+  adc_mode: single-ended
+  monitors: [XPOD, XPODW, LPOD]
+
+Fig3:
+  status: canonical
+  unit: ADU
+  dtype: uint16_t
+  sensor: Figaro TGS footprint 3
+  adc: ADS1115
+  adc_mode: single-ended
+  monitors: [XPOD, XPODW, LPOD]
+
+Fig3_heater:
+  status: canonical
+  unit: ADU
+  dtype: uint16_t
+  sensor: Figaro TGS footprint 3, heater channel
+  adc: ADS1115
+  adc_mode: single-ended
+  monitors: [XPOD, XPODW]
+
+Fig4:
+  status: canonical
+  unit: ADU
+  dtype: uint16_t
+  sensor: Figaro TGS footprint 4
+  adc: ADS1115
+  adc_mode: single-ended
+  monitors: [XPOD, XPODW]
+
+Fig4_heater:
+  status: canonical
+  unit: ADU
+  dtype: uint16_t
+  sensor: Figaro TGS footprint 4, heater channel
+  adc: ADS1115
+  adc_mode: single-ended
+  monitors: [XPOD, XPODW]
+
+# YPOD uses sensor-specific Figaro names
+Fig2600_LightVOC:
+  status: canonical
+  unit: ADU
+  dtype: uint16_t
+  sensor: Figaro TGS2600
+  adc: ADS1115
+  adc_mode: single-ended
+  monitors: [YPOD]
+  description: TGS2600 light VOC sensor signal
+
+Fig2600_heater:
+  status: canonical
+  unit: ADU
+  dtype: uint16_t
+  sensor: Figaro TGS2600, heater channel
+  adc: ADS1115
+  adc_mode: single-ended
+  monitors: [YPOD]
+
+Fig2602_HeavyVOC:
+  status: canonical
+  unit: ADU
+  dtype: uint16_t
+  sensor: Figaro TGS2602
+  adc: ADS1115
+  adc_mode: single-ended
+  monitors: [YPOD]
+  description: TGS2602 heavy VOC sensor signal
+
+Fig2602_heater:
+  status: canonical
+  unit: ADU
+  dtype: uint16_t
+  sensor: Figaro TGS2602, heater channel
+  adc: ADS1115
+  adc_mode: single-ended
+  monitors: [YPOD]
+
+
+# ==============================================================================
+# 7. ALPHASENSE B4 — ELECTROCHEMICAL
+# ==============================================================================
+# The Alphasense B4 footprint has been used across the fleet for CO (CO-B4)
+# and other electrochemical targets. The header names have evolved through
+# four distinct states reflecting progressive firmware corrections.
+#
+# TAXONOMY (in order of increasing correctness):
+#
+#   Tier 1 — LEGACY/KNOWN-BAD (Alphasense_C1, Alphasense_C2)
+#     Firmware mistake: electrodes were read single-ended or read the wrong ADS
+#     address instead of differentially. Data is not usable as differential.
+#     Monitors: LPOD V1.0–V6, XPOD V4.0–V4.1.1
+#
+#   Tier 2 — LEGACY/PARTIALLY CORRECT (Alphasense_Aux, Alphasense_Main)
+#     Differential read is correct, but dtype is uint16_t which cannot
+#     represent negative values from a differential ADC. Data is partially
+#     usable but clipped at zero.
+#     Monitors: LPOD V7, OzPOD V1–V2
+#
+#   Tier 3 — CANONICAL (Alphasense_Worker, Alphasense_Auxiliary)
+#     Correct differential read, correct dtype (int16_t), correct channel
+#     assignment per Alphasense B4 datasheet, electrode role names.
+#     Monitors: LPOD V8, OzPOD V3+, XPOD V4.2+, XPODW V5W+
+#
+# CHANNEL ASSIGNMENTS (canonical):
+#   Worker electrode    → ADS1115 differential (0-1)
+#   Auxiliary electrode → ADS1115 differential (2-3)
+# ==============================================================================
+
+Alphasense_Worker:
+  status: canonical
+  unit: ADU
+  dtype: int16_t
+  sensor: Alphasense B4
+  adc: ADS1115
+  adc_mode: differential (0-1)
+  monitors: [LPOD, OzPOD, XPOD, XPODW]
+  introduced:
+    LPOD: V8
+    OzPOD: V3
+    XPOD: V4.2.0
+    XPODW: V5W.1.1
+  description: >
+    Worker electrode of the Alphasense B4 sensor. Correct differential
+    read on channels 0-1 per datasheet. Canonical name fleet-wide.
+  legacy_aliases:
+    - Alphasense_Main   # Tier 2: correct differential, wrong dtype (uint16_t)
+    - Alphasense_C1     # Tier 1: single-ended firmware mistake
+    - CO_Main           # XPOD pre-V3.1 only
+
+Alphasense_Auxiliary:
+  status: canonical
+  unit: ADU
+  dtype: int16_t
+  sensor: Alphasense B4
+  adc: ADS1115
+  adc_mode: differential (2-3)
+  monitors: [LPOD, OzPOD, XPOD, XPODW]
+  introduced:
+    LPOD: V8
+    OzPOD: V3
+    XPOD: V4.2.0
+    XPODW: V5W.1.1
+  description: >
+    Auxiliary electrode of the Alphasense B4 sensor. Correct differential
+    read on channels 2-3 per datasheet. Canonical name fleet-wide.
+  legacy_aliases:
+    - Alphasense_Aux    # Tier 2: correct differential, wrong dtype (uint16_t)
+    - Alphasense_C2     # Tier 1: single-ended firmware mistake
+    - CO_Aux            # XPOD pre-V3.1 only
+
+# YPOD CO_ISB — single-ended Alphasense read through ISB board (distinct from above)
+CO_ISB:
+  status: canonical
+  unit: ADU
+  dtype: uint16_t
+  sensor: Alphasense CO-B4 via ISB board
+  adc: ADS1115
+  adc_mode: single-ended
+  monitors: [YPOD]
+  description: >
+    Single-ended read of the Alphasense CO-B4 through the Alphasense ISB
+    (Individual Sensor Board). This is a distinct signal path from the
+    direct differential reads used on XPOD/LPOD/OzPOD and is not
+    interchangeable with Alphasense_Worker or Alphasense_Auxiliary.
+
+
+# ==============================================================================
+# 8. ALPHASENSE QUADSTAT MODULE (MCP342x)
+# ==============================================================================
+# The Quadstat module supports up to 4 Alphasense B4 sensors via MCP342x ADC.
+# Each sensor has 2 channels (C1, C2). QSx_Cy naming is positional.
+# ==============================================================================
+
+QS1_C1:
+  status: canonical
+  unit: ADU
+  dtype: int16_t
+  sensor: Alphasense B4
+  adc: MCP342x
+  adc_mode: differential
+  monitors: [XPOD, XPODW, YPOD]
+  description: Quadstat module slot 1, channel 1
+
+QS1_C2:
+  status: canonical
+  unit: ADU
+  dtype: int16_t
+  sensor: Alphasense B4
+  adc: MCP342x
+  adc_mode: differential
+  monitors: [XPOD, XPODW, YPOD]
+  description: Quadstat module slot 1, channel 2
+
+QS2_C1:
+  status: canonical
+  unit: ADU
+  dtype: int16_t
+  sensor: Alphasense B4
+  adc: MCP342x
+  adc_mode: differential
+  monitors: [XPOD, XPODW, YPOD]
+  description: Quadstat module slot 2, channel 1
+
+QS2_C2:
+  status: canonical
+  unit: ADU
+  dtype: int16_t
+  sensor: Alphasense B4
+  adc: MCP342x
+  adc_mode: differential
+  monitors: [XPOD, XPODW, YPOD]
+  description: Quadstat module slot 2, channel 2
+
+QS3_C1:
+  status: canonical
+  unit: ADU
+  dtype: int16_t
+  sensor: Alphasense B4
+  adc: MCP342x
+  adc_mode: differential
+  monitors: [XPOD, XPODW, YPOD]
+  description: Quadstat module slot 3, channel 1
+
+QS3_C2:
+  status: canonical
+  unit: ADU
+  dtype: int16_t
+  sensor: Alphasense B4
+  adc: MCP342x
+  adc_mode: differential
+  monitors: [XPOD, XPODW, YPOD]
+  description: Quadstat module slot 3, channel 2
+
+QS4_C1:
+  status: canonical
+  unit: ADU
+  dtype: int16_t
+  sensor: Alphasense B4
+  adc: MCP342x
+  adc_mode: differential
+  monitors: [XPOD, XPODW, YPOD]
+  description: Quadstat module slot 4, channel 1
+
+QS4_C2:
+  status: canonical
+  unit: ADU
+  dtype: int16_t
+  sensor: Alphasense B4
+  adc: MCP342x
+  adc_mode: differential
+  monitors: [XPOD, XPODW, YPOD]
+  description: Quadstat module slot 4, channel 2
+
+
+# ==============================================================================
+# 9. ELT S300-3V — CO2
+# ==============================================================================
+
+ELT_CO2:
+  status: canonical
+  unit: ppm
+  dtype: uint16_t
+  sensor: ELT S300-3V
+  monitors: [XPOD, XPODW, YPOD]
+  description: CO2 concentration from ELT S300-3V NDIR sensor.
+  notes: >
+    Unit is flagged #ALLEGEDLY in all current firmware — physical unit
+    has not been formally verified against a reference standard.
+    Treat as nominally ppm until verified.
+  legacy_aliases:
+    - CO2   # Used in XPOD pre-V4.2.0 and YPOD calibrated configs
+
+
+# ==============================================================================
+# 10. MiCS-2611 — OZONE
+# ==============================================================================
+
+MiCS2611_Ozone:
+  status: canonical
+  unit: ADU
+  dtype: uint16_t
+  sensor: MiCS-2611
+  adc: ADS1115
+  adc_mode: single-ended
+  monitors: [XPOD, XPODW, YPOD, OzPOD]
+  description: Raw output from MiCS-2611 metal oxide ozone sensor.
+
+MiCS2611_heater:
+  status: canonical
+  unit: ADU
+  dtype: uint16_t
+  sensor: MiCS-2611, heater channel
+  adc: ADS1115
+  adc_mode: single-ended
+  monitors: [YPOD]
+  description: Heater channel for MiCS-2611. YPOD only.
+
+
+# ==============================================================================
+# 11. MQ131 — OZONE
+# ==============================================================================
+
+MQ131_Ozone:
+  status: canonical
+  unit: ADU
+  dtype: uint16_t
+  sensor: MQ131
+  adc: ADS1115
+  adc_mode: single-ended
+  monitors: [OzPOD]
+  description: Raw output from Winsen MQ131 ozone sensor. OzPOD only.
+
+
+# ==============================================================================
+# 12. MQ FOOTPRINT — GENERIC
+# ==============================================================================
+
+MQ:
+  status: canonical
+  unit: ADU
+  dtype: int16_t
+  sensor: "Shinzen MQ footprint (commonly MQ-4 or MQ-131)"
+  adc: ADS1115
+  adc_mode: single-ended
+  monitors: [XPOD, XPODW]
+  description: >
+    Generic MQ-series sensor footprint. Sensor installed varies by
+    deployment — commonly MQ-4 (methane) or MQ-131 (ozone).
+
+
+# ==============================================================================
+# 13. piD-TECH eVx — PID VOC
+# ==============================================================================
+
+PID:
+  status: canonical
+  unit: ADU
+  dtype: uint16_t
+  sensor: piD-TECH eVx
+  adc: ADS1115
+  adc_mode: single-ended
+  monitors: [XPOD, XPODW]
+  description: Raw output from piD-TECH eVx photoionization detector (PID).
+
+
+# ==============================================================================
+# 14. PLANTOWER PMS5003 — PARTICULATE MATTER
+# ==============================================================================
+# All Plantower PM fields are flagged as unverified units (#ALLEGEDLY).
+# Physical units are nominally ug/m^3 (mass concentration) and
+# particles/100mL (number concentration) per datasheet, but have not
+# been formally verified against a reference instrument fleet-wide.
+# NOTE: PM signals may be delayed 1-2 minutes on YPOD firmware due to
+# PMS5003 timeout handling. Fixed in YPOD V4.0.2.
+# ==============================================================================
+
+PM10_ENV:
+  status: canonical
+  unit: ug/m^3
+  dtype: uint16_t
+  sensor: Plantower PMS5003
+  monitors: [XPOD, XPODW, YPOD]
+  description: Environmental PM1.0 mass concentration (unverified unit)
+
+PM25_ENV:
+  status: canonical
+  unit: ug/m^3
+  dtype: uint16_t
+  sensor: Plantower PMS5003
+  monitors: [XPOD, XPODW, YPOD]
+  description: Environmental PM2.5 mass concentration (unverified unit)
+
+PM100_ENV:
+  status: canonical
+  unit: ug/m^3
+  dtype: uint16_t
+  sensor: Plantower PMS5003
+  monitors: [XPOD, XPODW, YPOD]
+  description: Environmental PM10.0 mass concentration (unverified unit)
+
+PM10_STD:
+  status: canonical
+  unit: ug/m^3
+  dtype: uint16_t
+  sensor: Plantower PMS5003
+  monitors: [XPOD, XPODW]
+  description: Standard PM1.0 mass concentration (unverified unit). XPOD V4+ only.
+
+PM25_STD:
+  status: canonical
+  unit: ug/m^3
+  dtype: uint16_t
+  sensor: Plantower PMS5003
+  monitors: [XPOD, XPODW]
+  description: Standard PM2.5 mass concentration (unverified unit). XPOD V4+ only.
+
+PM100_STD:
+  status: canonical
+  unit: ug/m^3
+  dtype: uint16_t
+  sensor: Plantower PMS5003
+  monitors: [XPOD, XPODW]
+  description: Standard PM10.0 mass concentration (unverified unit). XPOD V4+ only.
+
+PM03um:
+  status: canonical
+  unit: particles
+  dtype: uint16_t
+  sensor: Plantower PMS5003
+  monitors: [XPOD, XPODW, YPOD]
+  description: Particle count, 0.3um bin (unverified unit)
+
+PM05um:
+  status: canonical
+  unit: particles
+  dtype: uint16_t
+  sensor: Plantower PMS5003
+  monitors: [XPOD, XPODW, YPOD]
+  description: Particle count, 0.5um bin (unverified unit)
+
+PM10um:
+  status: canonical
+  unit: particles
+  dtype: uint16_t
+  sensor: Plantower PMS5003
+  monitors: [XPOD, XPODW, YPOD]
+  description: Particle count, 1.0um bin (unverified unit)
+
+PM25um:
+  status: canonical
+  unit: particles
+  dtype: uint16_t
+  sensor: Plantower PMS5003
+  monitors: [XPOD, XPODW, YPOD]
+  description: Particle count, 2.5um bin (unverified unit)
+
+PM50um:
+  status: canonical
+  unit: particles
+  dtype: uint16_t
+  sensor: Plantower PMS5003
+  monitors: [XPOD, XPODW, YPOD]
+  description: Particle count, 5.0um bin (unverified unit)
+
+PM100um:
+  status: canonical
+  unit: particles
+  dtype: uint16_t
+  sensor: Plantower PMS5003
+  monitors: [XPOD, XPODW, YPOD]
+  description: Particle count, 10.0um bin (unverified unit)
+
+
+# ==============================================================================
+# 15. OPC-R2 — OPTICAL PARTICLE COUNTER
+# ==============================================================================
+# OPC-R2 fields appear on MiniPOD (primary) and XPOD with OPC modification.
+# Bin size boundaries sourced from OPC-R2 datasheet.
+# OPC PM fields do NOT carry the #ALLEGEDLY flag — units are reported
+# directly from the OPC-R2 onboard processor.
+# ==============================================================================
+
+OPC_Bin0:
+  status: canonical
+  unit: particles/second
+  dtype: uint16_t
+  sensor: OPC-R2
+  monitors: [MiniPOD, XPOD]
+  description: Particle count, 0.35–0.46um bin (unverified unit)
+
+OPC_Bin1:
+  status: canonical
+  unit: particles/second
+  dtype: uint16_t
+  sensor: OPC-R2
+  monitors: [MiniPOD, XPOD]
+  description: Particle count, 0.46–0.66um bin (unverified unit)
+
+OPC_Bin2:
+  status: canonical
+  unit: particles/second
+  dtype: uint16_t
+  sensor: OPC-R2
+  monitors: [MiniPOD, XPOD]
+  description: Particle count, 0.66–1.0um bin (unverified unit)
+
+OPC_Bin3:
+  status: canonical
+  unit: particles/second
+  dtype: uint16_t
+  sensor: OPC-R2
+  monitors: [MiniPOD, XPOD]
+  description: Particle count, 1.0–1.3um bin (unverified unit)
+
+OPC_Bin4:
+  status: canonical
+  unit: particles/second
+  dtype: uint16_t
+  sensor: OPC-R2
+  monitors: [MiniPOD, XPOD]
+  description: Particle count, 1.3–1.7um bin (unverified unit)
+
+OPC_Bin5:
+  status: canonical
+  unit: particles/second
+  dtype: uint16_t
+  sensor: OPC-R2
+  monitors: [MiniPOD, XPOD]
+  description: Particle count, 1.7–2.3um bin (unverified unit)
+
+OPC_Bin6:
+  status: canonical
+  unit: particles/second
+  dtype: uint16_t
+  sensor: OPC-R2
+  monitors: [MiniPOD, XPOD]
+  description: Particle count, 2.3–3.0um bin (unverified unit)
+
+OPC_Bin7:
+  status: canonical
+  unit: particles/second
+  dtype: uint16_t
+  sensor: OPC-R2
+  monitors: [MiniPOD, XPOD]
+  description: Particle count, 3.0–4.0um bin (unverified unit)
+
+OPC_Bin8:
+  status: canonical
+  unit: particles/second
+  dtype: uint16_t
+  sensor: OPC-R2
+  monitors: [MiniPOD, XPOD]
+  description: Particle count, 4.0–5.0um bin (unverified unit)
+
+OPC_Bin9:
+  status: canonical
+  unit: particles/second
+  dtype: uint16_t
+  sensor: OPC-R2
+  monitors: [MiniPOD, XPOD]
+  description: Particle count, 5.0–6.5um bin (unverified unit)
+
+OPC_Bin10:
+  status: canonical
+  unit: particles/second
+  dtype: uint16_t
+  sensor: OPC-R2
+  monitors: [MiniPOD, XPOD]
+  description: Particle count, 6.5–8.0um bin (unverified unit)
+
+OPC_Bin11:
+  status: canonical
+  unit: particles/second
+  dtype: uint16_t
+  sensor: OPC-R2
+  monitors: [MiniPOD, XPOD]
+  description: Particle count, 8.0–10.0um bin (unverified unit)
+
+OPC_Bin12:
+  status: canonical
+  unit: particles/second
+  dtype: uint16_t
+  sensor: OPC-R2
+  monitors: [MiniPOD, XPOD]
+  description: Particle count, 10.0–12.0um bin (unverified unit)
+
+OPC_Bin13:
+  status: canonical
+  unit: particles/second
+  dtype: uint16_t
+  sensor: OPC-R2
+  monitors: [MiniPOD, XPOD]
+  description: Particle count, 12.0–14.0um bin (unverified unit)
+
+OPC_Bin14:
+  status: canonical
+  unit: particles/second
+  dtype: uint16_t
+  sensor: OPC-R2
+  monitors: [MiniPOD, XPOD]
+  description: Particle count, 14.0–16.0um bin (unverified unit)
+
+OPC_Bin15:
+  status: canonical
+  unit: particles/second
+  dtype: uint16_t
+  sensor: OPC-R2
+  monitors: [MiniPOD, XPOD]
+  description: Particle count, 16.0–17.5um bin (unverified unit)
+
+OPC_PM10:
+  status: canonical
+  unit: ug/m^3
+  dtype: float
+  sensor: OPC-R2
+  monitors: [MiniPOD, XPOD]
+  description: PM1.0 mass concentration from OPC-R2 onboard processor
+
+OPC_PM25:
+  status: canonical
+  unit: ug/m^3
+  dtype: float
+  sensor: OPC-R2
+  monitors: [MiniPOD, XPOD]
+  description: PM2.5 mass concentration from OPC-R2 onboard processor
+
+OPC_PM100:
+  status: canonical
+  unit: ug/m^3
+  dtype: float
+  sensor: OPC-R2
+  monitors: [MiniPOD, XPOD]
+  description: PM10.0 mass concentration from OPC-R2 onboard processor
+
+OPC_SamplePeriod:
+  status: canonical
+  unit: seconds
+  dtype: float
+  sensor: OPC-R2
+  monitors: [MiniPOD, XPOD]
+  description: Sample integration period reported by OPC-R2
+
+OPC_SampleFlowRate:
+  status: canonical
+  unit: mL/s
+  dtype: float
+  sensor: OPC-R2
+  monitors: [MiniPOD, XPOD]
+  description: Sample flow rate reported by OPC-R2
+
+OPC_Temperature:
+  status: canonical
+  unit: Celsius
+  dtype: float
+  sensor: OPC-R2
+  monitors: [MiniPOD]
+  description: Temperature processed from OPC-R2 raw signal. MiniPOD only.
+
+OPC_Relative_Humidity:
+  status: canonical
+  unit: "%RH"
+  dtype: float
+  sensor: OPC-R2
+  monitors: [MiniPOD]
+  description: Relative humidity processed from OPC-R2 raw signal. MiniPOD only.
+
+OPC_TempSignal:
+  status: canonical
+  unit: ADU
+  dtype: uint16_t
+  sensor: OPC-R2
+  monitors: [MiniPOD]
+  description: Raw temperature signal bits from OPC-R2. MiniPOD only.
+
+OPC_RelHumSignal:
+  status: canonical
+  unit: ADU
+  dtype: uint16_t
+  sensor: OPC-R2
+  monitors: [MiniPOD]
+  description: Raw relative humidity signal bits from OPC-R2. MiniPOD only.
+
+OPC_MToFBin1:
+  status: canonical
+  unit: ADU
+  dtype: uint16_t
+  sensor: OPC-R2
+  monitors: [MiniPOD]
+  description: Mean Time of Flight, bin 1. MiniPOD only.
+
+OPC_MToFBin3:
+  status: canonical
+  unit: ADU
+  dtype: uint16_t
+  sensor: OPC-R2
+  monitors: [MiniPOD]
+  description: Mean Time of Flight, bin 3. MiniPOD only.
+
+OPC_MToFBin5:
+  status: canonical
+  unit: ADU
+  dtype: uint16_t
+  sensor: OPC-R2
+  monitors: [MiniPOD]
+  description: Mean Time of Flight, bin 5. MiniPOD only.
+
+OPC_MToFBin7:
+  status: canonical
+  unit: ADU
+  dtype: uint16_t
+  sensor: OPC-R2
+  monitors: [MiniPOD]
+  description: Mean Time of Flight, bin 7. MiniPOD only.
+
+OPC_RejectGlitch:
+  status: canonical
+  unit: count
+  dtype: uint16_t
+  sensor: OPC-R2
+  monitors: [MiniPOD]
+  description: Count of particles rejected due to glitch detection. MiniPOD only.
+
+OPC_RejectLong:
+  status: canonical
+  unit: count
+  dtype: uint16_t
+  sensor: OPC-R2
+  monitors: [MiniPOD]
+  description: Count of particles rejected due to overlong pulse. MiniPOD only.
+
+OPC_Checksum:
+  status: canonical
+  unit: ADU
+  dtype: uint16_t
+  sensor: OPC-R2
+  monitors: [MiniPOD]
+  description: Checksum value from OPC-R2 data packet. MiniPOD only.
+
+OPC_Verify:
+  status: canonical
+  unit: boolean
+  dtype: uint8_t
+  sensor: OPC-R2
+  monitors: [MiniPOD]
+  description: Checksum verification result (1 = pass, 0 = fail). MiniPOD only.
+
+
+# ==============================================================================
+# 16. METEOROLOGICAL — WIND SPEED & DIRECTION
+# ==============================================================================
+
+MET_Speed:
+  status: canonical
+  unit: MPH
+  dtype: float
+  sensor: Shenzen Anemometer (SparkFun)
+  monitors: [XPOD, XPODW, YPOD]
+  description: Wind speed via digital pulse count over measured time interval.
+
+MET_Dir:
+  status: canonical
+  unit: degrees
+  dtype: float
+  sensor: Shenzen Wind Vane (SparkFun)
+  adc: Arduino MEGA A5
+  adc_mode: single-ended
+  monitors: [XPOD, XPODW, YPOD]
+  description: Wind direction in degrees from wind vane potentiometer.
+
+
+# ==============================================================================
+# 17. DERIVED / CALIBRATED OUTPUTS (YPOD V3.5+)
+# ==============================================================================
+# Calibrated outputs are computed on-device from raw sensor signals.
+# These fields appear only in SD_Calibrate and Serial_Calibrate configs.
+# ==============================================================================
+
+TVOC:
+  status: canonical
+  unit: ppm
+  dtype: float
+  monitors: [YPOD]
+  description: >
+    Total VOC concentration derived from Fig2600 and Fig2602 signals
+    via embedded calibration equation. YPOD V3.5+ only.
+
+CO:
+  status: canonical
+  unit: ppb
+  dtype: float
+  monitors: [YPOD]
+  description: >
+    Calibrated CO concentration derived from CO_ISB signal.
+    Unit history: logged as ppm in early V3.5 configs, corrected to ppb
+    in later versions. ppb is the canonical unit.
+
+CO2:
+  status: canonical
+  unit: ppm
+  dtype: float
+  monitors: [YPOD]
+  description: >
+    Calibrated CO2 concentration derived from ELT_CO2 raw signal.
+    Appears only in YPOD SD_Calibrate and Serial_Calibrate configs.
+    Distinct from ELT_CO2 (raw). See ELT_CO2 for raw field.
+
+
+# ==============================================================================
+# 18. CROSSTALK / RELAY FIELDS
+# ==============================================================================
+
+Starter_Packet:
+  status: canonical
+  unit: char
+  dtype: char
+  monitors: [MiniPOD]
+  description: >
+    Single character 'A' prepended to MiniPOD crosstalk packet as
+    start-of-packet validator. Introduced MiniPOD V3.4.1.
+
+Relayed_MiniPOD_Crosstalk:
+  status: canonical
+  unit: NA
+  dtype: string
+  format: '["A", OPC_PM10, OPC_PM25, OPC_PM100]'
+  monitors: [XPODW]
+  description: >
+    MiniPOD OPC PM values relayed to XPOD via crosstalk serial link,
+    then published through Boron 404x cellular. Validated by leading
+    character 'A'. XPODW V5+ only.
+
+
+# ==============================================================================
+# 19. YPOD LEGACY / INFRASTRUCTURE FIELDS
+# ==============================================================================
+
+YPODID:
+  status: legacy
+  unit: string
+  dtype: string
+  monitors: [YPOD]
+  description: Pod identifier logged inline to SD in early YPOD versions.
+    Dropped in V3.4.3+.
+
+ADC_EmptyChannel:
+  status: legacy
+  unit: ADU
+  dtype: uint16_t
+  monitors: [YPOD]
+  description: Unconnected ADC channel logged in YPOD V3.1.2. Ignore.
+
+EmptyChannel_GPS:
+  status: legacy
+  unit: NA
+  dtype: NA
+  monitors: [YPOD]
+  description: >
+    GPS channel placeholder in YPOD V3.1.2. GPS hardware was removed
+    as unusable. DO NOT USE.
+
+EAST_LONGITUDE:
+  status: legacy
+  unit: degrees
+  dtype: float
+  monitors: [YPOD]
+  description: >
+    RETIGO data format placeholder logged in YPOD calibrated configs.
+    Not a live GPS measurement.
+
+NORTH_LATITUDE:
+  status: legacy
+  unit: degrees
+  dtype: float
+  monitors: [YPOD]
+  description: >
+    RETIGO data format placeholder logged in YPOD calibrated configs.
+    Not a live GPS measurement.
