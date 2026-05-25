@@ -69,20 +69,18 @@ LPOD_V1_0_0:
       sensor: Figaro TGS footprint 3
       adc: ADS1115
       adc_mode: single-ended
-    Alphasense_Main:
+    Alphasense_C1: 
       unit: ADU
-      dtype: uint16_t
-      sensor: Alphasense B4
+      dtype: float
+      sensor: Alphasense CO-B4
       adc: ADS1115
-      adc_mode: differential (2-3)
-      description: Alphasense B4 main (firmware read wrong differential pair in V1-V3; corrected to 0-1 and renamed Alphasense_Worker in V4)
-    Alphasense_Aux:
+      adc_mode: single-ended (0)
+    Alphasense_C2:
       unit: ADU
-      dtype: uint16_t
-      sensor: Alphasense B4
+      dtype: float
+      sensor: Alphasense CO-B4
       adc: ADS1115
-      adc_mode: differential (0-1)
-      description: Alphasense B4 aux (firmware read wrong differential pair in V1-V3; corrected to 2-3 and renamed Alphasense_Auxiliary in V4)
+      adc_mode: single-ended (2)
     Temperature:
       unit: Celsius
       dtype: float
@@ -134,20 +132,18 @@ LPOD_V1_1_0:
       sensor: Figaro TGS footprint 3
       adc: ADS1115
       adc_mode: single-ended
-    Alphasense_Main:
+    Alphasense_C1: 
       unit: ADU
-      dtype: uint16_t
-      sensor: Alphasense B4
+      dtype: float
+      sensor: Alphasense CO-B4
       adc: ADS1115
-      adc_mode: differential (2-3)
-      description: Alphasense B4 main (firmware read wrong differential pair in V1-V3; corrected to 0-1 and renamed Alphasense_Worker in V4)
-    Alphasense_Aux:
+      adc_mode: single-ended (0)
+    Alphasense_C2:
       unit: ADU
-      dtype: uint16_t
-      sensor: Alphasense B4
+      dtype: float
+      sensor: Alphasense CO-B4
       adc: ADS1115
-      adc_mode: differential (0-1)
-      description: Alphasense B4 aux (firmware read wrong differential pair in V1-V3; corrected to 2-3 and renamed Alphasense_Auxiliary in V4)
+      adc_mode: single-ended (2)
     Temperature:
       unit: Celsius
       dtype: float
@@ -199,20 +195,18 @@ LPOD_Particle_POC:
       sensor: Figaro TGS footprint 3
       adc: ADS1115
       adc_mode: single-ended
-    Alphasense_Main:
+    Alphasense_C1: 
       unit: ADU
-      dtype: uint16_t
-      sensor: Alphasense B4
+      dtype: float
+      sensor: Alphasense CO-B4
       adc: ADS1115
-      adc_mode: differential (2-3)
-      description: Alphasense B4 main (firmware read wrong differential pair in V1-V3; corrected to 0-1 and renamed Alphasense_Worker in V4)
-    Alphasense_Aux:
+      adc_mode: single-ended (0)
+    Alphasense_C2:
       unit: ADU
-      dtype: uint16_t
-      sensor: Alphasense B4
+      dtype: float
+      sensor: Alphasense CO-B4
       adc: ADS1115
-      adc_mode: differential (0-1)
-      description: Alphasense B4 aux (firmware read wrong differential pair in V1-V3; corrected to 2-3 and renamed Alphasense_Auxiliary in V4)
+      adc_mode: single-ended (2)
     Temperature:
       unit: Celsius
       dtype: float
@@ -281,20 +275,18 @@ LPOD_V4:
       sensor: Figaro TGS footprint 3
       adc: ADS1115
       adc_mode: single-ended
-    Alphasense_Main:
+    Alphasense_C1: 
       unit: ADU
-      dtype: uint16_t
-      sensor: Alphasense B4
+      dtype: float
+      sensor: Alphasense CO-B4
       adc: ADS1115
-      adc_mode: differential (2-3)
-      description: Alphasense B4 main (firmware read wrong differential pair in V1-V3; corrected to 0-1 and renamed Alphasense_Worker in V4)
-    Alphasense_Aux:
+      adc_mode: single-ended (0)
+    Alphasense_C2:
       unit: ADU
-      dtype: uint16_t
-      sensor: Alphasense B4
+      dtype: float
+      sensor: Alphasense CO-B4
       adc: ADS1115
-      adc_mode: differential (0-1)
-      description: Alphasense B4 aux (firmware read wrong differential pair in V1-V3; corrected to 2-3 and renamed Alphasense_Auxiliary in V4)
+      adc_mode: single-ended (2)
     Temperature:
       unit: Celsius
       dtype: float
@@ -332,20 +324,18 @@ LPOD_V4:
       sensor: Figaro TGS footprint 3
       adc: ADS1115
       adc_mode: single-ended
-    Alphasense_Main:
+    Alphasense_C1: 
       unit: ADU
-      dtype: uint16_t
-      sensor: Alphasense B4
+      dtype: float
+      sensor: Alphasense CO-B4
       adc: ADS1115
-      adc_mode: differential (2-3)
-      description: Alphasense B4 main (firmware read wrong differential pair in V1-V3; corrected to 0-1 and renamed Alphasense_Worker in V4)
-    Alphasense_Aux:
+      adc_mode: single-ended (0)
+    Alphasense_C2:
       unit: ADU
-      dtype: uint16_t
-      sensor: Alphasense B4
+      dtype: float
+      sensor: Alphasense CO-B4
       adc: ADS1115
-      adc_mode: differential (0-1)
-      description: Alphasense B4 aux (firmware read wrong differential pair in V1-V3; corrected to 2-3 and renamed Alphasense_Auxiliary in V4)
+      adc_mode: single-ended (2)
     Temperature:
       unit: Celsius
       dtype: float
@@ -402,20 +392,18 @@ LPOD_V5:
       sensor: Figaro TGS footprint 3
       adc: ADS1115
       adc_mode: single-ended
-    Alphasense_Main:
+    Alphasense_C1: 
       unit: ADU
-      dtype: uint16_t
-      sensor: Alphasense B4
+      dtype: float
+      sensor: Alphasense CO-B4
       adc: ADS1115
-      adc_mode: differential (2-3)
-      description: Alphasense B4 main (firmware read wrong differential pair in V1-V3; corrected to 0-1 and renamed Alphasense_Worker in V4)
-    Alphasense_Aux:
+      adc_mode: single-ended (0)
+    Alphasense_C2:
       unit: ADU
-      dtype: uint16_t
-      sensor: Alphasense B4
+      dtype: float
+      sensor: Alphasense CO-B4
       adc: ADS1115
-      adc_mode: differential (0-1)
-      description: Alphasense B4 aux (firmware read wrong differential pair in V1-V3; corrected to 2-3 and renamed Alphasense_Auxiliary in V4)
+      adc_mode: single-ended (2)
     Temperature:
       unit: Celsius
       dtype: float
@@ -453,20 +441,18 @@ LPOD_V5:
       sensor: Figaro TGS footprint 3
       adc: ADS1115
       adc_mode: single-ended
-    Alphasense_Main:
+    Alphasense_C1: 
       unit: ADU
-      dtype: uint16_t
-      sensor: Alphasense B4
+      dtype: float
+      sensor: Alphasense CO-B4
       adc: ADS1115
-      adc_mode: differential (2-3)
-      description: Alphasense B4 main (firmware read wrong differential pair in V1-V3; corrected to 0-1 and renamed Alphasense_Worker in V4)
-    Alphasense_Aux:
+      adc_mode: single-ended (0)
+    Alphasense_C2:
       unit: ADU
-      dtype: uint16_t
-      sensor: Alphasense B4
+      dtype: float
+      sensor: Alphasense CO-B4
       adc: ADS1115
-      adc_mode: differential (0-1)
-      description: Alphasense B4 aux (firmware read wrong differential pair in V1-V3; corrected to 2-3 and renamed Alphasense_Auxiliary in V4)
+      adc_mode: single-ended (2)
     Temperature:
       unit: Celsius
       dtype: float
@@ -523,20 +509,18 @@ LPOD_V6:
       sensor: Figaro TGS footprint 3
       adc: ADS1115
       adc_mode: single-ended
-    Alphasense_Main:
+    Alphasense_C1: 
       unit: ADU
-      dtype: uint16_t
-      sensor: Alphasense B4
+      dtype: float
+      sensor: Alphasense CO-B4
       adc: ADS1115
-      adc_mode: differential (2-3)
-      description: Alphasense B4 main (firmware read wrong differential pair in V1-V3; corrected to 0-1 and renamed Alphasense_Worker in V4)
-    Alphasense_Aux:
+      adc_mode: single-ended (0)
+    Alphasense_C2:
       unit: ADU
-      dtype: uint16_t
-      sensor: Alphasense B4
+      dtype: float
+      sensor: Alphasense CO-B4
       adc: ADS1115
-      adc_mode: differential (0-1)
-      description: Alphasense B4 aux (firmware read wrong differential pair in V1-V3; corrected to 2-3 and renamed Alphasense_Auxiliary in V4)
+      adc_mode: single-ended (2)
     Temperature:
       unit: Celsius
       dtype: float
@@ -574,20 +558,18 @@ LPOD_V6:
       sensor: Figaro TGS footprint 3
       adc: ADS1115
       adc_mode: single-ended    
-    Alphasense_Aux:
+    Alphasense_C2:
       unit: ADU
-      dtype: uint16_t
-      sensor: Alphasense B4
+      dtype: float
+      sensor: Alphasense CO-B4
       adc: ADS1115
-      adc_mode: differential (0-1)
-      description: Alphasense B4 aux (firmware read wrong differential pair in V1-V3; corrected to 2-3 and renamed Alphasense_Auxiliary in V4)
-    Alphasense_Main:
+      adc_mode: single-ended (2)
+    Alphasense_C1: 
       unit: ADU
-      dtype: uint16_t
-      sensor: Alphasense B4
+      dtype: float
+      sensor: Alphasense CO-B4
       adc: ADS1115
-      adc_mode: differential (2-3)
-      description: Alphasense B4 main (firmware read wrong differential pair in V1-V3; corrected to 0-1 and renamed Alphasense_Worker in V4)
+      adc_mode: single-ended (0)
     Temperature:
       unit: Celsius
       dtype: float
@@ -634,20 +616,18 @@ LPOD_V7:
       sensor: Figaro TGS footprint 3
       adc: ADS1115
       adc_mode: single-ended
-    Alphasense_Main:
+    Alphasense_Auxiliary:
       unit: ADU
-      dtype: uint16_t
-      sensor: Alphasense B4
+      dtype: float
+      sensor: Alphasense CO-B4
       adc: ADS1115
       adc_mode: differential (2-3)
-      description: Alphasense B4 main (firmware read wrong differential pair in V1-V3; corrected to 0-1 and renamed Alphasense_Worker in V4)
-    Alphasense_Aux:
+    Alphasense_Worker: 
       unit: ADU
-      dtype: uint16_t
-      sensor: Alphasense B4
+      dtype: float
+      sensor: Alphasense CO-B4
       adc: ADS1115
       adc_mode: differential (0-1)
-      description: Alphasense B4 aux (firmware read wrong differential pair in V1-V3; corrected to 2-3 and renamed Alphasense_Auxiliary in V4)
     Temperature:
       unit: Celsius
       dtype: float
@@ -685,20 +665,18 @@ LPOD_V7:
       sensor: Figaro TGS footprint 3
       adc: ADS1115
       adc_mode: single-ended    
-    Alphasense_Aux:
+    Alphasense_Worker: 
       unit: ADU
-      dtype: uint16_t
-      sensor: Alphasense B4
+      dtype: float
+      sensor: Alphasense CO-B4
       adc: ADS1115
       adc_mode: differential (0-1)
-      description: Alphasense B4 aux (firmware read wrong differential pair in V1-V3; corrected to 2-3 and renamed Alphasense_Auxiliary in V4)
-    Alphasense_Main:
+    Alphasense_Auxiliary:
       unit: ADU
-      dtype: uint16_t
-      sensor: Alphasense B4
+      dtype: float
+      sensor: Alphasense CO-B4
       adc: ADS1115
       adc_mode: differential (2-3)
-      description: Alphasense B4 main (firmware read wrong differential pair in V1-V3; corrected to 0-1 and renamed Alphasense_Worker in V4)
     Temperature:
       unit: Celsius
       dtype: float
@@ -744,21 +722,18 @@ LPOD_V8:
       dtype: uint16_t
       sensor: Figaro TGS footprint 3
       adc: ADS1115
-      adc_mode: single-ended
-    Alphasense_Main:
+    Alphasense_Auxiliary:
       unit: ADU
-      dtype: int16_t
-      sensor: Alphasense B4
+      dtype: float
+      sensor: Alphasense CO-B4
       adc: ADS1115
       adc_mode: differential (2-3)
-      description: Alphasense B4 main (firmware read wrong differential pair in V1-V3; corrected to 0-1 and renamed Alphasense_Worker in V4)
-    Alphasense_Aux:
+    Alphasense_Worker: 
       unit: ADU
-      dtype: int16_t
-      sensor: Alphasense B4
+      dtype: float
+      sensor: Alphasense CO-B4
       adc: ADS1115
       adc_mode: differential (0-1)
-      description: Alphasense B4 aux (firmware read wrong differential pair in V1-V3; corrected to 2-3 and renamed Alphasense_Auxiliary in V4)
     Temperature:
       unit: Celsius
       dtype: float
@@ -796,20 +771,18 @@ LPOD_V8:
       sensor: Figaro TGS footprint 3
       adc: ADS1115
       adc_mode: single-ended    
-    Alphasense_Aux:
+    Alphasense_Worker: 
       unit: ADU
-      dtype: int16_t
-      sensor: Alphasense B4
+      dtype: float
+      sensor: Alphasense CO-B4
       adc: ADS1115
       adc_mode: differential (0-1)
-      description: Alphasense B4 aux (firmware read wrong differential pair in V1-V3; corrected to 2-3 and renamed Alphasense_Auxiliary in V4)
-    Alphasense_Main:
+    Alphasense_Auxiliary:
       unit: ADU
-      dtype: int16_t
-      sensor: Alphasense B4
+      dtype: float
+      sensor: Alphasense CO-B4
       adc: ADS1115
       adc_mode: differential (2-3)
-      description: Alphasense B4 main (firmware read wrong differential pair in V1-V3; corrected to 0-1 and renamed Alphasense_Worker in V4)
     Temperature:
       unit: Celsius
       dtype: float
