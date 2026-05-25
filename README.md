@@ -17,9 +17,9 @@ Thanks to Izzy for this suggestion! Here we will be tracking each version of the
 | Version       | "Named" Ver.   | Pilot         | Date               | Description & Purpose                		|
 | ------------- | -------------- | ------------- | -------------      | ----------------------------------------------- |
 | V1.0.0      	| Initial Upload | Percy         | May 22, 2026       | Moving documents to central git		     	|
-| V1.1.0     	| AS Standard, X | Percy         | May 22, 2026       | Beginning to standardize Alphasense channel labeling in XPOD YAML |
-|            	|                |               |                    | Ensures that there is accurate labeling based on hardwares |
+| V1.1.0     	  | AS Standard, X | Percy         | May 22, 2026       | Beginning to standardize Alphasense channel labeling in XPOD YAML |
+|              	|                |               |                    | Ensures that there is accurate labeling based on hardwares |
+| V1.2.0        | AS X, L, Oz    | Percy         | May 25, 2026       | Decreases available Alphasense labeling to be accurate to hardware |
+| V2.0.0        | Adds Library!  | Percy         | May 25, 2026       | Creates central reference document that will track all YAML versions! |
 
 # Feature Request 
-* Verify, update & standardize all Alphasense nomenclature with hardware 
-* Create "global dictionary" that we can pull from for future versions as a standard "word" bank
