@@ -95,14 +95,14 @@ XPOD_V3_1_0:
       sensor: MiCS-2611
       adc: ADS1115
       adc_mode: single-ended
-    Alphasense_C1: 
+    Alphasense_D01: 
       unit: ADU
       dtype: float
       sensor: Alphasense CO-B4
       adc: ADS1115
       adc_mode: differential (0-1)
       description: Differential between channels 0 & 1
-    Alphasense_C2:
+    Alphasense_D23: 
       unit: ADU
       dtype: float
       sensor: Alphasense CO-B4
@@ -338,14 +338,14 @@ XPOD_V3_1_2:
       sensor: MiCS-2611
       adc: ADS1115
       adc_mode: single-ended
-    Alphasense_C1: 
+    Alphasense_D01: 
       unit: ADU
       dtype: float
       sensor: Alphasense CO-B4
       adc: ADS1115
       adc_mode: differential (0-1)
       description: Differential between channels 0 & 1
-    Alphasense_C2:
+    Alphasense_D23: 
       unit: ADU
       dtype: float
       sensor: Alphasense CO-B4
@@ -660,14 +660,14 @@ XPOD_V3_2_0:
       sensor: MiCS-2611
       adc: ADS1115
       adc_mode: single-ended      
-    Alphasense_C1: 
+    Alphasense_D01: 
       unit: ADU
       dtype: float
       sensor: Alphasense CO-B4
       adc: ADS1115
       adc_mode: differential (0-1)
       description: Differential between channels 0 & 1
-    Alphasense_C2:
+    Alphasense_D23: 
       unit: ADU
       dtype: float
       sensor: Alphasense CO-B4
@@ -982,14 +982,14 @@ XPOD_V3_2_1:
       sensor: MiCS-2611
       adc: ADS1115
       adc_mode: single-ended
-    Alphasense_C1: 
+    Alphasense_D01: 
       unit: ADU
       dtype: float
       sensor: Alphasense CO-B4
       adc: ADS1115
       adc_mode: differential (0-1)
       description: Differential between channels 0 & 1
-    Alphasense_C2:
+    Alphasense_D23: 
       unit: ADU
       dtype: float
       sensor: Alphasense CO-B4
@@ -1304,14 +1304,14 @@ XPOD_V3_2_2:
       sensor: MiCS-2611
       adc: ADS1115
       adc_mode: single-ended
-    Alphasense_C1: 
+    Alphasense_D01: 
       unit: ADU
       dtype: float
       sensor: Alphasense CO-B4
       adc: ADS1115
       adc_mode: differential (0-1)
       description: Differential between channels 0 & 1
-    Alphasense_C2:
+    Alphasense_D23: 
       unit: ADU
       dtype: float
       sensor: Alphasense CO-B4
@@ -1520,14 +1520,14 @@ XPOD_V3_2_3:
       sensor: MiCS-2611
       adc: ADS1115
       adc_mode: single-ended
-    Alphasense_C1: 
+    Alphasense_D01: 
       unit: ADU
       dtype: float
       sensor: Alphasense CO-B4
       adc: ADS1115
       adc_mode: differential (0-1)
       description: Differential between channels 0 & 1
-    Alphasense_C2:
+    Alphasense_D23: 
       unit: ADU
       dtype: float
       sensor: Alphasense CO-B4
@@ -1738,15 +1738,15 @@ XPOD_V3_4_0:
       dtype: uint16_t
       sensor: MiCS-2611
       adc: ADS1115
-      adc_mode: single-ended
-    Alphasense_C1: 
+      adc_mode: single-ended      
+    Alphasense_D01: 
       unit: ADU
       dtype: int16_t
       sensor: Alphasense CO-B4
       adc: ADS1115
       adc_mode: differential (0-1)
       description: Differential between channels 0 & 1
-    Alphasense_C2:
+    Alphasense_D23: 
       unit: ADU
       dtype: int16_t
       sensor: Alphasense CO-B4
@@ -1957,20 +1957,21 @@ XPOD_V4_0_0:
       sensor: MiCS-2611
       adc: ADS1115
       adc_mode: single-ended
-    Alphasense_C1: 
+    Alphasense_Worker: 
+      previous_label: Alphasense_D01
       unit: ADU
       dtype: int16_t
       sensor: Alphasense CO-B4
       adc: ADS1115
       adc_mode: differential (0-1)
-      description: Differential between channels 0 & 1
+      description: Differential between channels 0 & 1 
     Alphasense_C2:
       unit: ADU
       dtype: int16_t
       sensor: Alphasense CO-B4
       adc: ADS1115
       adc_mode: differential (2-3)
-      description: Differential between channels 2 & 3
+      description: Differential between channels 2 & 3 (but there's problems here...)
     ELT_CO2:
       unit: ppm #ALLEGEDLY
       dtype: uint16_t
@@ -2178,20 +2179,21 @@ XPOD_V4_1_0:
       sensor: MiCS-2611
       adc: ADS1115
       adc_mode: single-ended
-    Alphasense_C1: 
+    Alphasense_Worker: 
+      previous_label: Alphasense_D01
       unit: ADU
       dtype: int16_t
       sensor: Alphasense CO-B4
       adc: ADS1115
       adc_mode: differential (0-1)
-      description: Differential between channels 0 & 1
+      description: Differential between channels 0 & 1 
     Alphasense_C2:
       unit: ADU
       dtype: int16_t
       sensor: Alphasense CO-B4
       adc: ADS1115
       adc_mode: differential (2-3)
-      description: Differential between channels 2 & 3
+      description: Differential between channels 2 & 3 (but there's problems here...)
     ELT_CO2:
       unit: ppm #ALLEGEDLY
       dtype: uint16_t
@@ -2403,20 +2405,21 @@ XPOD_V4_1_1:
       sensor: MiCS-2611
       adc: ADS1115
       adc_mode: single-ended
-    Alphasense_C1: 
+    Alphasense_Worker: 
+      previous_label: Alphasense_D01
       unit: ADU
       dtype: int16_t
       sensor: Alphasense CO-B4
       adc: ADS1115
       adc_mode: differential (0-1)
-      description: Differential between channels 0 & 1
+      description: Differential between channels 0 & 1 
     Alphasense_C2:
       unit: ADU
       dtype: int16_t
       sensor: Alphasense CO-B4
       adc: ADS1115
       adc_mode: differential (2-3)
-      description: Differential between channels 2 & 3
+      description: Differential between channels 2 & 3 (but there's problems here...)
     ELT_CO2:
       unit: ppm #ALLEGEDLY
       dtype: uint16_t
@@ -2629,21 +2632,21 @@ XPOD_V4_2_0:
       adc: ADS1115
       adc_mode: single-ended      
     Alphasense_Worker: 
-      previous_label: Alphasense_C1
+      previous_label: Alphasense_D01
       unit: ADU
       dtype: int16_t
       sensor: Alphasense CO-B4
       adc: ADS1115
       adc_mode: differential (0-1)
-      description: Differential between 0 & 1 (used to be labeled "aux" or "auxiliary" incorrectly, which is why we changed prev. label to C2)
+      description: Differential between channels 0 & 1 
     Alphasense_Auxiliary:
-      previous_label: Alphasense_C2
+      previous_label: Alphasense_D23
       unit: ADU
       dtype: int16_t
       sensor: Alphasense CO-B4
       adc: ADS1115
       adc_mode: differential (2-3)
-      description: Differential between 2 & 3 (used to be labeled "main" or "worker" incorrectly, which is why we changed prev. label to C1)
+      description: Differential between channels 2 & 3 (but there's problems here...)
     ELT_CO2:
       unit: ppm #ALLEGEDLY
       dtype: uint16_t
