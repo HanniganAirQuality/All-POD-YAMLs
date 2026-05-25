@@ -95,14 +95,14 @@ X_Standard:
         sensor: MiCS-2611
         adc: ADS1115
         adc_mode: single-ended
-      Alphasense_D01: 
+      Alphasense_Worker: 
         unit: ADU
         dtype: float
         sensor: Alphasense CO-B4
         adc: ADS1115
         adc_mode: differential (0-1)
         description: Differential between channels 0 & 1
-      Alphasense_D23: 
+      Alphasense_Auxiliary: 
         unit: ADU
         dtype: float
         sensor: Alphasense CO-B4
@@ -338,14 +338,14 @@ X_Standard:
         sensor: MiCS-2611
         adc: ADS1115
         adc_mode: single-ended
-      Alphasense_D01: 
+      Alphasense_Worker: 
         unit: ADU
         dtype: float
         sensor: Alphasense CO-B4
         adc: ADS1115
         adc_mode: differential (0-1)
         description: Differential between channels 0 & 1
-      Alphasense_D23: 
+      Alphasense_Auxiliary: 
         unit: ADU
         dtype: float
         sensor: Alphasense CO-B4
@@ -660,14 +660,14 @@ X_Standard:
         sensor: MiCS-2611
         adc: ADS1115
         adc_mode: single-ended      
-      Alphasense_D01: 
+      Alphasense_Worker: 
         unit: ADU
         dtype: float
         sensor: Alphasense CO-B4
         adc: ADS1115
         adc_mode: differential (0-1)
         description: Differential between channels 0 & 1
-      Alphasense_D23: 
+      Alphasense_Auxiliary: 
         unit: ADU
         dtype: float
         sensor: Alphasense CO-B4
@@ -982,14 +982,14 @@ X_Standard:
         sensor: MiCS-2611
         adc: ADS1115
         adc_mode: single-ended
-      Alphasense_D01: 
+      Alphasense_Worker: 
         unit: ADU
         dtype: float
         sensor: Alphasense CO-B4
         adc: ADS1115
         adc_mode: differential (0-1)
         description: Differential between channels 0 & 1
-      Alphasense_D23: 
+      Alphasense_Auxiliary: 
         unit: ADU
         dtype: float
         sensor: Alphasense CO-B4
@@ -1304,14 +1304,14 @@ X_Standard:
         sensor: MiCS-2611
         adc: ADS1115
         adc_mode: single-ended
-      Alphasense_D01: 
+      Alphasense_Worker: 
         unit: ADU
         dtype: float
         sensor: Alphasense CO-B4
         adc: ADS1115
         adc_mode: differential (0-1)
         description: Differential between channels 0 & 1
-      Alphasense_D23: 
+      Alphasense_Auxiliary: 
         unit: ADU
         dtype: float
         sensor: Alphasense CO-B4
@@ -1520,14 +1520,14 @@ X_Standard:
         sensor: MiCS-2611
         adc: ADS1115
         adc_mode: single-ended
-      Alphasense_D01: 
+      Alphasense_Worker: 
         unit: ADU
         dtype: float
         sensor: Alphasense CO-B4
         adc: ADS1115
         adc_mode: differential (0-1)
         description: Differential between channels 0 & 1
-      Alphasense_D23: 
+      Alphasense_Auxiliary: 
         unit: ADU
         dtype: float
         sensor: Alphasense CO-B4
@@ -1739,14 +1739,14 @@ X_Standard:
         sensor: MiCS-2611
         adc: ADS1115
         adc_mode: single-ended      
-      Alphasense_D01: 
+      Alphasense_Worker: 
         unit: ADU
         dtype: int16_t
         sensor: Alphasense CO-B4
         adc: ADS1115
         adc_mode: differential (0-1)
         description: Differential between channels 0 & 1
-      Alphasense_D23: 
+      Alphasense_Auxiliary: 
         unit: ADU
         dtype: int16_t
         sensor: Alphasense CO-B4
@@ -1958,7 +1958,7 @@ X_Standard:
         adc: ADS1115
         adc_mode: single-ended
       Alphasense_Worker: 
-        previous_label: Alphasense_D01
+        previous_label: Alphasense_Worker
         unit: ADU
         dtype: int16_t
         sensor: Alphasense CO-B4
@@ -2180,7 +2180,7 @@ X_Standard:
         adc: ADS1115
         adc_mode: single-ended
       Alphasense_Worker: 
-        previous_label: Alphasense_D01
+        previous_label: Alphasense_Worker
         unit: ADU
         dtype: int16_t
         sensor: Alphasense CO-B4
@@ -2406,7 +2406,7 @@ X_Standard:
         adc: ADS1115
         adc_mode: single-ended
       Alphasense_Worker: 
-        previous_label: Alphasense_D01
+        previous_label: Alphasense_Worker
         unit: ADU
         dtype: int16_t
         sensor: Alphasense CO-B4
@@ -2632,7 +2632,7 @@ X_Standard:
         adc: ADS1115
         adc_mode: single-ended      
       Alphasense_Worker: 
-        previous_label: Alphasense_D01
+        previous_label: Alphasense_Worker
         unit: ADU
         dtype: int16_t
         sensor: Alphasense CO-B4
@@ -2640,7 +2640,7 @@ X_Standard:
         adc_mode: differential (0-1)
         description: Differential between channels 0 & 1 
       Alphasense_Auxiliary:
-        previous_label: Alphasense_D23
+        previous_label: Alphasense_Auxiliary
         unit: ADU
         dtype: int16_t
         sensor: Alphasense CO-B4
@@ -2861,7 +2861,7 @@ X_Crosstalk_Config:
         adc: ADS1115
         adc_mode: single-ended
       Alphasense_Worker: 
-        previous_label: Alphasense_D01
+        previous_label: Alphasense_Worker
         unit: ADU
         dtype: int16_t
         sensor: Alphasense CO-B4
@@ -3098,7 +3098,7 @@ X_Crosstalk_Config:
         dtype: uint16_t
         sensor: ELT S300-3V
       Alphasense_Worker: 
-        previous_label: Alphasense_D01
+        previous_label: Alphasense_Worker
         unit: ADU
         dtype: int16_t
         sensor: Alphasense CO-B4
@@ -3187,7 +3187,7 @@ X_Crosstalk_Config:
         adc: ADS1115
         adc_mode: single-ended
       Alphasense_Worker: 
-        previous_label: Alphasense_D01
+        previous_label: Alphasense_Worker
         unit: ADU
         dtype: int16_t
         sensor: Alphasense CO-B4
@@ -3424,7 +3424,7 @@ X_Crosstalk_Config:
         dtype: uint16_t
         sensor: ELT S300-3V
       Alphasense_Worker: 
-        previous_label: Alphasense_D01
+        previous_label: Alphasense_Worker
         unit: ADU
         dtype: int16_t
         sensor: Alphasense CO-B4
@@ -3514,7 +3514,7 @@ X_Crosstalk_Config:
         adc: ADS1115
         adc_mode: single-ended
       Alphasense_Worker: 
-        previous_label: Alphasense_D01
+        previous_label: Alphasense_Worker
         unit: ADU
         dtype: int16_t
         sensor: Alphasense CO-B4
@@ -3751,7 +3751,7 @@ X_Crosstalk_Config:
         dtype: uint16_t
         sensor: ELT S300-3V
       Alphasense_Worker: 
-        previous_label: Alphasense_D01
+        previous_label: Alphasense_Worker
         unit: ADU
         dtype: int16_t
         sensor: Alphasense CO-B4
@@ -3841,7 +3841,7 @@ X_Crosstalk_Config:
         adc: ADS1115
         adc_mode: single-ended
       Alphasense_Worker: 
-        previous_label: Alphasense_D01
+        previous_label: Alphasense_Worker
         unit: ADU
         dtype: int16_t
         sensor: Alphasense CO-B4
@@ -4078,7 +4078,7 @@ X_Crosstalk_Config:
         dtype: uint16_t
         sensor: ELT S300-3V
       Alphasense_Worker: 
-        previous_label: Alphasense_D01
+        previous_label: Alphasense_Worker
         unit: ADU
         dtype: int16_t
         sensor: Alphasense CO-B4
