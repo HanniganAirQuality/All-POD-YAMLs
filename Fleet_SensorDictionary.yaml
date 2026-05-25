@@ -60,20 +60,20 @@ DateTime:
   dtype: string
   format: "YYYY-MM-ddThh:mm:ss"
   sensor: DS3231, PCF8523
-  monitors: [XPOD, XPODW, YPOD, LPOD, OzPOD, MiniPOD]
+  monitors: [XPOD, YPOD, LPOD, OzPOD, MiniPOD]
   description: ISO 8601 timestamp from DS3231 or PCF8523 RTC
   legacy_aliases:
     - Date   # YPOD V3.1.2–V3.2.0; split into separate Date and Time fields
     - Time   # YPOD V3.1.2–V3.2.0; split into separate Date and Time fields
 
-# Cellular-decomposed timestamp fields (XPODW only)
-# These replace DateTime in the cellular publish string for XPODW
+# Cellular-decomposed timestamp fields (XPOD only)
+# These replace DateTime in the cellular publish string for XPOD
 DT_Hours:
   status: canonical
   unit: hours
   dtype: int
   sensor: DS3231
-  monitors: [XPODW]
+  monitors: [XPOD]
   description: Hour component of DateTime, used in cellular publish only
 
 DT_Minutes:
@@ -81,7 +81,7 @@ DT_Minutes:
   unit: minutes
   dtype: int
   sensor: DS3231
-  monitors: [XPODW]
+  monitors: [XPOD]
   description: Minute component of DateTime, used in cellular publish only
 
 DT_Seconds:
@@ -89,10 +89,10 @@ DT_Seconds:
   unit: seconds
   dtype: int
   sensor: DS3231
-  monitors: [XPODW]
+  monitors: [XPOD]
   description: Second component of DateTime, used in cellular publish only
   notes: >
-    KNOWN BUG in XPODW V5W.1.1: unit was incorrectly written as "minutes"
+    KNOWN BUG in XPOD V5W.1.1: unit was incorrectly written as "minutes"
     in the YAML. The field is seconds. Corrected in dictionary.
 
 
@@ -106,7 +106,7 @@ Voltage_in:
   dtype: float
   adc: Arduino MEGA A0
   adc_mode: single-ended
-  monitors: [XPOD, XPODW]
+  monitors: [XPOD]
   description: Input voltage to the XPOD. Not present on V6M PCB (no V_in channel).
     Added back in XPOD V4.1.1 for V4 PCBs.
 
@@ -120,14 +120,14 @@ Temperature:
   unit: Celsius
   dtype: float
   sensor: BME680
-  monitors: [XPOD, XPODW, YPOD, LPOD, OzPOD]
+  monitors: [XPOD, YPOD, LPOD, OzPOD]
 
 Pressure:
   status: canonical
   unit: Hectopascals (hPa)
   dtype: float
   sensor: BME680
-  monitors: [XPOD, XPODW, YPOD, LPOD, OzPOD]
+  monitors: [XPOD, YPOD, LPOD, OzPOD]
   notes: >
     UNIT CONFLICT IN OLDER FILES: LPOD and OzPOD HeaderLogs use "Pascals"
     as the unit string. BME680 natively outputs hPa. Canonical unit is hPa.
@@ -138,14 +138,14 @@ Relative_Humidity:
   unit: "%RH"
   dtype: float
   sensor: BME680
-  monitors: [XPOD, XPODW, YPOD, LPOD, OzPOD]
+  monitors: [XPOD, YPOD, LPOD, OzPOD]
 
 BME680_Gas_Resistance:
   status: canonical
   unit: kiloohms (kOhms)
   dtype: uint32_t
   sensor: BME680
-  monitors: [XPOD, XPODW, LPOD, OzPOD]
+  monitors: [XPOD, LPOD, OzPOD]
   description: >
     Raw gas resistance from BME680 VOC heater element. Interpret relative
     to a baseline only — do not treat as absolute VOC concentration.
@@ -215,7 +215,7 @@ Fig1:
   sensor: "Figaro TGS footprint 1 (commonly TGS2600)"
   adc: ADS1115
   adc_mode: single-ended
-  monitors: [XPOD, XPODW, LPOD]
+  monitors: [XPOD, LPOD]
 
 Fig2:
   status: canonical
@@ -224,7 +224,7 @@ Fig2:
   sensor: "Figaro TGS footprint 2 (commonly TGS2602)"
   adc: ADS1115
   adc_mode: single-ended
-  monitors: [XPOD, XPODW, LPOD]
+  monitors: [XPOD, LPOD]
 
 Fig3:
   status: canonical
@@ -233,7 +233,7 @@ Fig3:
   sensor: Figaro TGS footprint 3
   adc: ADS1115
   adc_mode: single-ended
-  monitors: [XPOD, XPODW, LPOD]
+  monitors: [XPOD, LPOD]
 
 Fig3_heater:
   status: canonical
@@ -242,7 +242,7 @@ Fig3_heater:
   sensor: Figaro TGS footprint 3, heater channel
   adc: ADS1115
   adc_mode: single-ended
-  monitors: [XPOD, XPODW]
+  monitors: [XPOD]
 
 Fig4:
   status: canonical
@@ -251,7 +251,7 @@ Fig4:
   sensor: Figaro TGS footprint 4
   adc: ADS1115
   adc_mode: single-ended
-  monitors: [XPOD, XPODW]
+  monitors: [XPOD]
 
 Fig4_heater:
   status: canonical
@@ -260,7 +260,7 @@ Fig4_heater:
   sensor: Figaro TGS footprint 4, heater channel
   adc: ADS1115
   adc_mode: single-ended
-  monitors: [XPOD, XPODW]
+  monitors: [XPOD]
 
 # YPOD uses sensor-specific Figaro names
 Fig2600_LightVOC:
@@ -325,7 +325,7 @@ Fig2602_heater:
 #   Tier 3 — CANONICAL (Alphasense_Worker, Alphasense_Auxiliary)
 #     Correct differential read, correct dtype (int16_t), correct channel
 #     assignment per Alphasense B4 datasheet, electrode role names.
-#     Monitors: LPOD V8, OzPOD V3+, XPOD V4.2+, XPODW V5W+
+#     Monitors: LPOD V8, OzPOD V3+, XPOD V4.2+, XPOD V5W+
 #
 # CHANNEL ASSIGNMENTS (canonical):
 #   Worker electrode    → ADS1115 differential (0-1)
@@ -339,12 +339,11 @@ Alphasense_Worker:
   sensor: Alphasense B4
   adc: ADS1115
   adc_mode: differential (0-1)
-  monitors: [LPOD, OzPOD, XPOD, XPODW]
+  monitors: [LPOD, OzPOD, XPOD]
   introduced:
     LPOD: V8
     OzPOD: V3
-    XPOD: V4.2.0
-    XPODW: V5W.1.1
+    XPOD: V4.2.0, V5W.1.1
   description: >
     Worker electrode of the Alphasense B4 sensor. Correct differential
     read on channels 0-1 per datasheet. Canonical name fleet-wide.
@@ -360,12 +359,11 @@ Alphasense_Auxiliary:
   sensor: Alphasense B4
   adc: ADS1115
   adc_mode: differential (2-3)
-  monitors: [LPOD, OzPOD, XPOD, XPODW]
+  monitors: [LPOD, OzPOD, XPOD]
   introduced:
     LPOD: V8
     OzPOD: V3
-    XPOD: V4.2.0
-    XPODW: V5W.1.1
+    XPOD: V4.2.0, V5W.1.1
   description: >
     Auxiliary electrode of the Alphasense B4 sensor. Correct differential
     read on channels 2-3 per datasheet. Canonical name fleet-wide.
@@ -404,7 +402,7 @@ QS1_C1:
   sensor: Alphasense B4
   adc: MCP342x
   adc_mode: differential
-  monitors: [XPOD, XPODW, YPOD]
+  monitors: [XPOD, YPOD]
   description: Quadstat module slot 1, channel 1
 
 QS1_C2:
@@ -414,7 +412,7 @@ QS1_C2:
   sensor: Alphasense B4
   adc: MCP342x
   adc_mode: differential
-  monitors: [XPOD, XPODW, YPOD]
+  monitors: [XPOD, YPOD]
   description: Quadstat module slot 1, channel 2
 
 QS2_C1:
@@ -424,7 +422,7 @@ QS2_C1:
   sensor: Alphasense B4
   adc: MCP342x
   adc_mode: differential
-  monitors: [XPOD, XPODW, YPOD]
+  monitors: [XPOD, YPOD]
   description: Quadstat module slot 2, channel 1
 
 QS2_C2:
@@ -434,7 +432,7 @@ QS2_C2:
   sensor: Alphasense B4
   adc: MCP342x
   adc_mode: differential
-  monitors: [XPOD, XPODW, YPOD]
+  monitors: [XPOD, YPOD]
   description: Quadstat module slot 2, channel 2
 
 QS3_C1:
@@ -444,7 +442,7 @@ QS3_C1:
   sensor: Alphasense B4
   adc: MCP342x
   adc_mode: differential
-  monitors: [XPOD, XPODW, YPOD]
+  monitors: [XPOD, YPOD]
   description: Quadstat module slot 3, channel 1
 
 QS3_C2:
@@ -454,7 +452,7 @@ QS3_C2:
   sensor: Alphasense B4
   adc: MCP342x
   adc_mode: differential
-  monitors: [XPOD, XPODW, YPOD]
+  monitors: [XPOD, YPOD]
   description: Quadstat module slot 3, channel 2
 
 QS4_C1:
@@ -464,7 +462,7 @@ QS4_C1:
   sensor: Alphasense B4
   adc: MCP342x
   adc_mode: differential
-  monitors: [XPOD, XPODW, YPOD]
+  monitors: [XPOD, YPOD]
   description: Quadstat module slot 4, channel 1
 
 QS4_C2:
@@ -474,7 +472,7 @@ QS4_C2:
   sensor: Alphasense B4
   adc: MCP342x
   adc_mode: differential
-  monitors: [XPOD, XPODW, YPOD]
+  monitors: [XPOD, YPOD]
   description: Quadstat module slot 4, channel 2
 
 
@@ -487,7 +485,7 @@ ELT_CO2:
   unit: ppm
   dtype: uint16_t
   sensor: ELT S300-3V
-  monitors: [XPOD, XPODW, YPOD]
+  monitors: [XPOD, YPOD]
   description: CO2 concentration from ELT S300-3V NDIR sensor.
   notes: >
     Unit is flagged #ALLEGEDLY in all current firmware — physical unit
@@ -508,7 +506,7 @@ MiCS2611_Ozone:
   sensor: MiCS-2611
   adc: ADS1115
   adc_mode: single-ended
-  monitors: [XPOD, XPODW, YPOD, OzPOD]
+  monitors: [XPOD, YPOD, OzPOD]
   description: Raw output from MiCS-2611 metal oxide ozone sensor.
 
 MiCS2611_heater:
@@ -548,7 +546,7 @@ MQ:
   sensor: "Shinzen MQ footprint (commonly MQ-4 or MQ-131)"
   adc: ADS1115
   adc_mode: single-ended
-  monitors: [XPOD, XPODW]
+  monitors: [XPOD]
   description: >
     Generic MQ-series sensor footprint. Sensor installed varies by
     deployment — commonly MQ-4 (methane) or MQ-131 (ozone).
@@ -565,7 +563,7 @@ PID:
   sensor: piD-TECH eVx
   adc: ADS1115
   adc_mode: single-ended
-  monitors: [XPOD, XPODW]
+  monitors: [XPOD]
   description: Raw output from piD-TECH eVx photoionization detector (PID).
 
 
@@ -585,7 +583,7 @@ PM10_ENV:
   unit: ug/m^3
   dtype: uint16_t
   sensor: Plantower PMS5003
-  monitors: [XPOD, XPODW, YPOD]
+  monitors: [XPOD, YPOD]
   description: Environmental PM1.0 mass concentration (unverified unit)
 
 PM25_ENV:
@@ -593,7 +591,7 @@ PM25_ENV:
   unit: ug/m^3
   dtype: uint16_t
   sensor: Plantower PMS5003
-  monitors: [XPOD, XPODW, YPOD]
+  monitors: [XPOD, YPOD]
   description: Environmental PM2.5 mass concentration (unverified unit)
 
 PM100_ENV:
@@ -601,7 +599,7 @@ PM100_ENV:
   unit: ug/m^3
   dtype: uint16_t
   sensor: Plantower PMS5003
-  monitors: [XPOD, XPODW, YPOD]
+  monitors: [XPOD, YPOD]
   description: Environmental PM10.0 mass concentration (unverified unit)
 
 PM10_STD:
@@ -609,7 +607,7 @@ PM10_STD:
   unit: ug/m^3
   dtype: uint16_t
   sensor: Plantower PMS5003
-  monitors: [XPOD, XPODW]
+  monitors: [XPOD]
   description: Standard PM1.0 mass concentration (unverified unit). XPOD V4+ only.
 
 PM25_STD:
@@ -617,7 +615,7 @@ PM25_STD:
   unit: ug/m^3
   dtype: uint16_t
   sensor: Plantower PMS5003
-  monitors: [XPOD, XPODW]
+  monitors: [XPOD]
   description: Standard PM2.5 mass concentration (unverified unit). XPOD V4+ only.
 
 PM100_STD:
@@ -625,7 +623,7 @@ PM100_STD:
   unit: ug/m^3
   dtype: uint16_t
   sensor: Plantower PMS5003
-  monitors: [XPOD, XPODW]
+  monitors: [XPOD]
   description: Standard PM10.0 mass concentration (unverified unit). XPOD V4+ only.
 
 PM03um:
@@ -633,7 +631,7 @@ PM03um:
   unit: particles
   dtype: uint16_t
   sensor: Plantower PMS5003
-  monitors: [XPOD, XPODW, YPOD]
+  monitors: [XPOD, YPOD]
   description: Particle count, 0.3um bin (unverified unit)
 
 PM05um:
@@ -641,7 +639,7 @@ PM05um:
   unit: particles
   dtype: uint16_t
   sensor: Plantower PMS5003
-  monitors: [XPOD, XPODW, YPOD]
+  monitors: [XPOD, YPOD]
   description: Particle count, 0.5um bin (unverified unit)
 
 PM10um:
@@ -649,7 +647,7 @@ PM10um:
   unit: particles
   dtype: uint16_t
   sensor: Plantower PMS5003
-  monitors: [XPOD, XPODW, YPOD]
+  monitors: [XPOD, YPOD]
   description: Particle count, 1.0um bin (unverified unit)
 
 PM25um:
@@ -657,7 +655,7 @@ PM25um:
   unit: particles
   dtype: uint16_t
   sensor: Plantower PMS5003
-  monitors: [XPOD, XPODW, YPOD]
+  monitors: [XPOD, YPOD]
   description: Particle count, 2.5um bin (unverified unit)
 
 PM50um:
@@ -665,7 +663,7 @@ PM50um:
   unit: particles
   dtype: uint16_t
   sensor: Plantower PMS5003
-  monitors: [XPOD, XPODW, YPOD]
+  monitors: [XPOD, YPOD]
   description: Particle count, 5.0um bin (unverified unit)
 
 PM100um:
@@ -673,7 +671,7 @@ PM100um:
   unit: particles
   dtype: uint16_t
   sensor: Plantower PMS5003
-  monitors: [XPOD, XPODW, YPOD]
+  monitors: [XPOD, YPOD]
   description: Particle count, 10.0um bin (unverified unit)
 
 
@@ -960,7 +958,7 @@ MET_Speed:
   unit: MPH
   dtype: float
   sensor: Shenzen Anemometer (SparkFun)
-  monitors: [XPOD, XPODW, YPOD]
+  monitors: [XPOD, YPOD]
   description: Wind speed via digital pulse count over measured time interval.
 
 MET_Dir:
@@ -970,7 +968,7 @@ MET_Dir:
   sensor: Shenzen Wind Vane (SparkFun)
   adc: Arduino MEGA A5
   adc_mode: single-ended
-  monitors: [XPOD, XPODW, YPOD]
+  monitors: [XPOD, YPOD]
   description: Wind direction in degrees from wind vane potentiometer.
 
 
@@ -1029,11 +1027,11 @@ Relayed_MiniPOD_Crosstalk:
   unit: NA
   dtype: string
   format: '["A", OPC_PM10, OPC_PM25, OPC_PM100]'
-  monitors: [XPODW]
+  monitors: [XPOD]
   description: >
     MiniPOD OPC PM values relayed to XPOD via crosstalk serial link,
     then published through Boron 404x cellular. Validated by leading
-    character 'A'. XPODW V5+ only.
+    character 'A'. XPOD V5+ only.
 
 
 # ==============================================================================
