@@ -1958,7 +1958,6 @@ XPOD_V4_0_0:
       adc: ADS1115
       adc_mode: single-ended
     Alphasense_Worker: 
-      previous_label: Alphasense_Worker
       unit: ADU
       dtype: int16_t
       sensor: Alphasense CO-B4
@@ -2180,7 +2179,6 @@ XPOD_V4_1_0:
       adc: ADS1115
       adc_mode: single-ended
     Alphasense_Worker: 
-      previous_label: Alphasense_Worker
       unit: ADU
       dtype: int16_t
       sensor: Alphasense CO-B4
@@ -2406,7 +2404,6 @@ XPOD_V4_1_1:
       adc: ADS1115
       adc_mode: single-ended
     Alphasense_Worker: 
-      previous_label: Alphasense_Worker
       unit: ADU
       dtype: int16_t
       sensor: Alphasense CO-B4
@@ -2632,7 +2629,6 @@ XPOD_V4_2_0:
       adc: ADS1115
       adc_mode: single-ended      
     Alphasense_Worker: 
-      previous_label: Alphasense_Worker
       unit: ADU
       dtype: int16_t
       sensor: Alphasense CO-B4
