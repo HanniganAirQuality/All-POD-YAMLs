@@ -726,13 +726,13 @@ LPOD_V8:
       adc: ADS1115
     Alphasense_Auxiliary:
       unit: ADU
-      dtype: float
+      dtype: int16_t
       sensor: Alphasense CO-B4
       adc: ADS1115
       adc_mode: differential (2-3)
     Alphasense_Worker: 
       unit: ADU
-      dtype: float
+      dtype: int16_t
       sensor: Alphasense CO-B4
       adc: ADS1115
       adc_mode: differential (0-1)
@@ -775,13 +775,13 @@ LPOD_V8:
       adc_mode: single-ended    
     Alphasense_Worker: 
       unit: ADU
-      dtype: float
+      dtype: int16_t
       sensor: Alphasense CO-B4
       adc: ADS1115
       adc_mode: differential (0-1)
     Alphasense_Auxiliary:
       unit: ADU
-      dtype: float
+      dtype: int16_t
       sensor: Alphasense CO-B4
       adc: ADS1115
       adc_mode: differential (2-3)
