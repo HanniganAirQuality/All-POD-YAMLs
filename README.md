@@ -24,3 +24,4 @@ Thanks to Izzy for this suggestion! Here we will be tracking each version of the
 | V3.0.0        | Merged split   | Percy         | May 25, 2026       | Merges XPODW & XPOD as well as MiniPODW & MiniPOD |
 
 # Feature Request 
+* Update code from "Parsing YAML Header Files!" to ensure compatibility with changed nomenclature in V3.0.0
