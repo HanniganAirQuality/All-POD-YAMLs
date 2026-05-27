@@ -793,3 +793,109 @@ LPOD_V8:
       unit: "%RH"
       dtype: float
       sensor: BME680
+LPOD_V9:
+  date: 2025-07
+  changelog: Added negative measurement on Alphasense B4 (& fixes issues with JSON for event)
+  microcontroller: Particle Boron 404x
+  SD_fileinfo:  
+    FileName: LPODID_YYYY_MM_dd 
+    FileType: .CSV 
+  Cell_Eventinfo: 
+    EventName: LPODID
+    EventType: PRIVATE
+    SprintfFormat: "[[%5d,%5d,%5d,%5d,%5d,%2.2f,%2.2f],[%5d,%5d,%5d,%5d,%5d,%2.2f,%2.2f],[%5d,%5d,%5d,%5d,%5d,%2.2f,%2.2f],[%5d,%5d,%5d,%5d,%5d,%2.2f,%2.2f],[%5d,%5d,%5d,%5d,%5d,%2.2f,%2.2f],[%5d,%5d,%5d,%5d,%5d,%2.2f,%2.2f],[%5d,%5d,%5d,%5d,%5d,%2.2f,%2.2f],[%5d,%5d,%5d,%5d,%5d,%2.2f,%2.2f],[%5d,%5d,%5d,%5d,%5d,%2.2f,%2.2f],[%5d,%5d,%5d,%5d,%5d,%2.2f,%2.2f],[%5d,%5d,%5d,%5d,%5d,%2.2f,%2.2f],[%5d,%5d,%5d,%5d,%5d,%2.2f,%2.2f],[%5d,%5d,%5d,%5d,%5d,%2.2f,%2.2f],[%5d,%5d,%5d,%5d,%5d,%2.2f,%2.2f],[%5d,%5d,%5d,%5d,%5d,%2.2f,%2.2f],[%5d,%5d,%5d,%5d,%5d,%2.2f,%2.2f],[%5d,%5d,%5d,%5d,%5d,%2.2f,%2.2f],[%5d,%5d,%5d,%5d,%5d,%2.2f,%2.2f],[%5d,%5d,%5d,%5d,%5d,%2.2f,%2.2f],]"
+    RowsPerEvent: 19
+    LogPeriod: 10s
+  SD:
+    DateTime:
+      unit: timestamp
+      dtype: string
+      format: "YYYY-MM-ddThh:mm:ss"
+      sensor: DS3231
+      description: ISO 8601 timestamp from DS3231 RTC
+    Fig1:
+      unit: ADU
+      dtype: uint16_t
+      sensor: Figaro TGS footprint 1, sensor (Often TGS 2600)
+      adc: ADS1115
+      adc_mode: single-ended
+    Fig2:
+      unit: ADU
+      dtype: uint16_t
+      sensor: Figaro TGS footprint 2, sensor (Often TGS 2602)
+      adc: ADS1115
+      adc_mode: single-ended
+    Fig3:
+      unit: ADU
+      dtype: uint16_t
+      sensor: Figaro TGS footprint 3
+      adc: ADS1115
+    Alphasense_Auxiliary:
+      unit: ADU
+      dtype: int16_t
+      sensor: Alphasense CO-B4
+      adc: ADS1115
+      adc_mode: differential (2-3)
+    Alphasense_Worker: 
+      unit: ADU
+      dtype: int16_t
+      sensor: Alphasense CO-B4
+      adc: ADS1115
+      adc_mode: differential (0-1)
+    Temperature:
+      unit: Celsius
+      dtype: float
+      sensor: BME680
+    Pressure:
+      unit: Pascals
+      dtype: float
+      sensor: BME680
+    Relative_Humidity:
+      unit: "%RH"
+      dtype: float
+      sensor: BME680
+    BME680_Gas_Resistance:
+      unit: Ohms
+      dtype: uint32_t
+      sensor: BME680
+      description: Raw gas resistance from BME680 VOC heater element; interpret
+        relative to baseline only, not as absolute VOC concentration
+  Cell:
+    Fig1:
+      unit: ADU
+      dtype: uint16_t
+      sensor: Figaro TGS footprint 1, sensor (Often TGS 2600)
+      adc: ADS1115
+      adc_mode: single-ended
+    Fig2:
+      unit: ADU
+      dtype: uint16_t
+      sensor: Figaro TGS footprint 2, sensor (Often TGS 2602)
+      adc: ADS1115
+      adc_mode: single-ended
+    Fig3:
+      unit: ADU
+      dtype: uint16_t
+      sensor: Figaro TGS footprint 3
+      adc: ADS1115
+      adc_mode: single-ended    
+    Alphasense_Auxiliary:
+      unit: ADU
+      dtype: int16_t
+      sensor: Alphasense CO-B4
+      adc: ADS1115
+      adc_mode: differential (2-3)
+    Alphasense_Worker: 
+      unit: ADU
+      dtype: int16_t
+      sensor: Alphasense CO-B4
+      adc: ADS1115
+      adc_mode: differential (0-1)
+    Temperature:
+      unit: Celsius
+      dtype: float
+      sensor: BME680
+    Relative_Humidity:
+      unit: "%RH"
+      dtype: float
+      sensor: BME680
