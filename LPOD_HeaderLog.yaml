@@ -794,8 +794,8 @@ LPOD_V8:
       dtype: float
       sensor: BME680
 LPOD_V9:
-  date: 2025-07
-  changelog: Added negative measurement on Alphasense B4 (& fixes issues with JSON for event)
+  date: 2026-05-27
+  changelog: Fixed swapped channels from cell to sd & fixed nomenclature in firmware
   microcontroller: Particle Boron 404x
   SD_fileinfo:  
     FileName: LPODID_YYYY_MM_dd 
