@@ -3958,7 +3958,7 @@ X_Crosstalk_Config:
         dtype: uint16_t
         sensor: Plantower PMS5003
         description: 10.0um particle count
-      Null: 
+      Missing: 
         description: Ignore, accidental ,...
     Cell: 
       DT_Hours: 
