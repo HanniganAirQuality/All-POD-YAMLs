@@ -3794,6 +3794,12 @@ X_Crosstalk_Config:
         adc: ADS1115
         adc_mode: single-ended
         description: Commonly MQ-4 or MQ-131
+      PID: 
+        unit: ADU
+        dtype: uint16_t
+        sensor: piD-TECH eVx 
+        adc: ADS1115
+        adc_mode: single-ended
       MiCS2611_Ozone:
         unit: ADU
         dtype: uint16_t
@@ -3952,6 +3958,8 @@ X_Crosstalk_Config:
         dtype: uint16_t
         sensor: Plantower PMS5003
         description: 10.0um particle count
+      Null: 
+        description: Ignore, accidental ,...
     Cell: 
       DT_Hours: 
         unit: hours
