@@ -2332,7 +2332,7 @@ X_Standard:
         description: 10.0um particle count
   XPOD_V4_1_1:
     date: 2025-07-31
-    changelog: Re-adds analog V_in (accidentally removed from V4 rebuild) 
+    changelog: Re-adds analog V_in (accidentally removed from V4 rebuild) & PID default disabled
     SD_fileinfo: 
       DefaultFileConfig: ConfigB
       FileName: XPODID_YYYY_mm_dd
@@ -2391,12 +2391,6 @@ X_Standard:
         adc: ADS1115
         adc_mode: single-ended
         description: Commonly MQ-4 or MQ-131
-      PID: 
-        unit: ADU
-        dtype: uint16_t
-        sensor: piD-TECH eVx 
-        adc: ADS1115
-        adc_mode: single-ended
       MiCS2611_Ozone:
         unit: ADU
         dtype: uint16_t
