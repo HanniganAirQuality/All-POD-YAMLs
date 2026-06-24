@@ -3241,17 +3241,6 @@ YPOD_V4_0_4:
       dtype: string
       format: "YYYY-MM-ddThh:mm:ss"
       sensor: DS3231
-    EAST_LONGITUDE: 
-      unit: NA 
-      dtype: string
-      description: For RETIGO formatting
-    NORTH_LATITUDE: 
-      unit: NA 
-      dtype: string
-      description: For RETIGO formatting
-    YPODID: 
-      unit: ID
-      dtype: string
     BME180_Temperature:
       unit: Celsius
       dtype: double
