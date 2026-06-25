@@ -3282,6 +3282,10 @@ YPOD_V4_0_4:
       sensor: Figaro TGS2602, classed as heavy VOCs
       adc: ADS1115
       adc_mode: single-ended
+    Ozone:
+      unit: ADU
+      dtype: uint16_t
+      sensor: MISC2611
     CO_ch1:
       unit: ADU
       dtype: uint16_t
