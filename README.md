@@ -22,6 +22,7 @@ Thanks to Izzy for this suggestion! Here we will be tracking each version of the
 | V1.2.0        | AS X, L, Oz    | Percy         | May 25, 2026       | Decreases available Alphasense labeling to be accurate to hardware |
 | V2.0.0        | Dictionary     | Percy         | May 25, 2026       | Creates central reference document that will track all YAML versions! |
 | V3.0.0        | Merged split   | Percy         | May 25, 2026       | Merges XPODW & XPOD as well as MiniPODW & MiniPOD |
+| V4.0.0        | Serial X4.1.1+   | Percy         | June 26, 2026      | Adds Serial to XPOD_V4_1_1 & 4_2_0 |
 
 # Feature Request 
 * Update code from "Parsing YAML Header Files!" to ensure compatibility with changed nomenclature in V3.0.0
