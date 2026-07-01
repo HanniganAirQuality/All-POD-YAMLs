@@ -4167,7 +4167,7 @@ YPOD_V4_2_0:
       sensor: BME180
       error_messages: 
         -99: Failed measurement
-      default_axis_range: [-20, 50]
+      default_axis_range: [0, 30]
     BME180_Pressure:
       unit: millibar
       dtype: double
@@ -4180,7 +4180,7 @@ YPOD_V4_2_0:
       dtype: float
       sensor: SHT25 
       description: Calculated from equation ((175.72 * (float)temperature_board) / (65536)) - 46.85
-      default_axis_range: [-20, 50]
+      default_axis_range: [0, 30]
     SHT25_Humidity:
       unit: "%RH"
       dtype: float
@@ -4194,20 +4194,20 @@ YPOD_V4_2_0:
       description: Calibrated output, produced from an equation based on the YPODID
       error_messages: 
         -1: No calibration
-      default_axis_range: [0, 10000]
+      default_axis_range: [0, 1000]
     Fig2600_LightVOC:
       unit: ADU
       dtype: uint16_t
       sensor: Figaro TGS2600, classed as light VOCs
       adc: ADS1115
       adc_mode: single-ended
-      default_axis_range: [0, 10000]
+      default_axis_range: [0, 1000]
     Fig2602_HeavyVOC:
       unit: ADU
       dtype: uint16_t
       sensor: Figaro TGS2602, classed as heavy VOCs
       adc: ADS1115
-      default_axis_range: [0, 10000]
+      default_axis_range: [0, 1000]
     MiCS2611_Ozone:
       unit: ADU
       dtype: uint16_t
@@ -4216,13 +4216,13 @@ YPOD_V4_2_0:
       adc_mode: single-ended
       default_axis_range: [0, 1000]
     Calibrated_CO:
-      unit: ppm
+      unit: ppb
       dtype: uint16_t
       sensor: Alphasense CO B4, through Alphasense ISB
       adc: ADS1115
       adc_mode: single-ended
       description: Embedded calibration CO value
-      default_axis_range: [0, 10000]
+      default_axis_range: [0, 1000]
     CO_ch1:
       unit: ADU
       dtype: uint16_t
@@ -4230,7 +4230,7 @@ YPOD_V4_2_0:
       adc: ADS1115
       adc_mode: single-ended
       description: First CO channel (main)
-      default_axis_range: [0, 10000]
+      default_axis_range: [0, 1000]
     CO_ch2:
       unit: ADU
       dtype: uint16_t
@@ -4238,12 +4238,12 @@ YPOD_V4_2_0:
       adc: ADS1115
       adc_mode: single-ended
       description: Second CO channel (auxillary)
-      default_axis_range: [0, 10000]
+      default_axis_range: [0, 1000]
     ELT_CO2:
       unit: ppm #ALLEGEDLY
       dtype: uint16_t
       sensor: ELT S300-3V
-      default_axis_range: [0, 5000]
+      default_axis_range: [0, 1000]
     PM10_ENV: 
       unit: ug/m^3 #ALLEGEDLY
       dtype: uint16_t
@@ -4289,7 +4289,7 @@ YPOD_V4_2_0:
       sensor: BME180
       error_messages: 
         -99: Failed measurement
-      default_axis_range: [-20, 50]
+      default_axis_range: [0, 30]
     BME180_Pressure:
       unit: millibar
       dtype: double
@@ -4302,7 +4302,7 @@ YPOD_V4_2_0:
       dtype: float
       sensor: SHT25 
       description: Calculated from equation ((175.72 * (float)temperature_board) / (65536)) - 46.85
-      default_axis_range: [-20, 50]
+      default_axis_range: [0, 30]
     SHT25_Humidity:
       unit: "%RH"
       dtype: float
@@ -4316,34 +4316,34 @@ YPOD_V4_2_0:
       description: Calibrated output, produced from an equation based on the YPODID
       error_messages: 
         -1: No calibration
-      default_axis_range: [0, 10000]
+      default_axis_range: [0, 1000]
     Fig2600_LightVOC:
       unit: ADU
       dtype: uint16_t
       sensor: Figaro TGS2600, classed as light VOCs
       adc: ADS1115
       adc_mode: single-ended
-      default_axis_range: [0, 10000]
+      default_axis_range: [0, 1000]
     Fig2602_HeavyVOC:
       unit: ADU
       dtype: uint16_t
       sensor: Figaro TGS2602, classed as heavy VOCs
       adc: ADS1115
       adc_mode: single-ended
-      default_axis_range: [0, 10000]
+      default_axis_range: [0, 1000]
     Ozone:
-      unit: ADU
+      unit: ppb
       dtype: uint16_t
       sensor: MISC2611
-      default_axis_range: [0, 1000]
+      default_axis_range: [0, 100]
     Calibrated_CO:
-      unit: ppm
+      unit: ppb
       dtype: uint16_t
       sensor: Alphasense CO B4, through Alphasense ISB
       adc: ADS1115
       adc_mode: single-ended
       description: Embedded calibration CO value
-      default_axis_range: [0, 1000]
+      default_axis_range: [0, 500]
     CO_ch1:
       unit: ADU
       dtype: uint16_t
@@ -4351,7 +4351,7 @@ YPOD_V4_2_0:
       adc: ADS1115
       adc_mode: single-ended
       description: First CO channel (main)
-      default_axis_range: [0, 10000]
+      default_axis_range: [0, 1000]
     CO_ch2:
       unit: ADU
       dtype: uint16_t
@@ -4359,7 +4359,7 @@ YPOD_V4_2_0:
       adc: ADS1115
       adc_mode: single-ended
       description: Second CO channel (auxillary)
-      default_axis_range: [0, 10000]
+      default_axis_range: [0, 1000]
     CO2:
       unit: ppm 
       dtype: float
