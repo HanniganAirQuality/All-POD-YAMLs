@@ -1,0 +1,198 @@
+# ==============================================================================
+# SPOD Header Log
+# ==============================================================================
+# description: This document logs header changes across versions for the soil quality monitors
+# author: Alex Hansen
+# date: July 13, 2026
+# ==============================================================================
+# STRUCTURE NOTES:
+#   Each version entry contains:
+#     - date:      when this version was introduced
+#     - changelog: what changed from the previous version
+#     - filetype:  SD file type, .TXT or .CSV
+#     - SD:        column definitions for SD-logged columns (write order preserved)
+#     - Serial:    needed because of live visualization integrations -- helpful to have headers
+#
+#   Each header has:
+#     - unit:        (required) physical or encoded unit of the value
+#     - dtype:       (required) C/embedded data type as logged by firmware
+#     - format:      (optional) format string, used where encoding is non-obvious
+#     - sensor:      (optional) sensor IC that produced the reading
+#     - adc:         (optional) ADC used for digitization, if applicable
+#     - adc_mode:    (optional) single-ended or differential with channel notation
+#     - description: (optional) plain-language notes for analysts and developers
+#
+#   Naming convention:
+#     - Full words preferred over abbreviations (Temperature not T, Pressure not P)
+#     - Sensor-prefixed where multiple sensors report the same measurand (MiCS2611_Ozone, MQ131_Ozone)
+#     - Casing: PascalCase for compound names, sensor model names preserved as-is
+# ==============================================================================
+
+SPOD_V1.0:
+  date: 2026-07-13
+  changelog: Initial documented SPOD format; firmware version was not provided.
+  SD_fileinfo:
+    FileName: SPOD SPODID_YYYY_M_d
+    FileType: .txt
+  SD:
+    SPODID:
+      unit: ID
+      dtype: string
+      description: Monitor identifier, including the SPOD prefix (for example, SPOD YELLOW3)
+    Date:
+      unit: date
+      dtype: string
+      format: "YYYY-M-d"
+    Time:
+      unit: time
+      dtype: string
+      format: "hh:mm:ss"
+    EmptyField:
+      unit: NA
+      dtype: string
+      description: Intentionally empty field emitted between Time and Temperature1
+    Temperature1:
+      unit: ADU
+      dtype: uint16_t
+      description: Raw first temperature-channel value; firmware prints the converted Celsius reading on the preceding diagnostic line
+    Temperature2:
+      unit: ADU
+      dtype: uint16_t
+      description: Raw second temperature-channel value; firmware prints the converted Celsius reading on the preceding diagnostic line
+    CO2:
+      unit: ppm
+      dtype: uint16_t
+      description: Carbon dioxide reading
+    Soil:
+      unit: ADU
+      dtype: uint16_t
+      description: Raw soil-sensor reading
+    Visible:
+      unit: ADU
+      dtype: uint16_t
+      sensor: SI1145
+      description: Raw visible-light reading
+    Infrared:
+      unit: ADU
+      dtype: uint16_t
+      sensor: SI1145
+      description: Raw infrared-light reading
+    UV_Index:
+      unit: UV index
+      dtype: float
+      sensor: SI1145
+
+  Serial:
+    SPODID:
+      unit: ID
+      dtype: string
+      description: Monitor identifier, including the SPOD prefix (for example, SPOD YELLOW3)
+    Date:
+      unit: date
+      dtype: string
+      format: "YYYY-M-d"
+    Time:
+      unit: time
+      dtype: string
+      format: "hh:mm:ss"
+    EmptyField:
+      unit: NA
+      dtype: string
+      description: Intentionally empty field emitted between Time and Temperature1
+    Temperature1:
+      unit: ADU
+      dtype: uint16_t
+      description: Raw first temperature-channel value; firmware prints the converted Celsius reading on the preceding diagnostic line
+    Temperature2:
+      unit: ADU
+      dtype: uint16_t
+      description: Raw second temperature-channel value; firmware prints the converted Celsius reading on the preceding diagnostic line
+    CO2:
+      unit: ppm
+      dtype: uint16_t
+      description: Carbon dioxide reading
+    Soil:
+      unit: ADU
+      dtype: uint16_t
+      description: Raw soil-sensor reading
+    Visible:
+      unit: ADU
+      dtype: uint16_t
+      sensor: SI1145
+      description: Raw visible-light reading
+    Infrared:
+      unit: ADU
+      dtype: uint16_t
+      sensor: SI1145
+      description: Raw infrared-light reading
+    UV_Index:
+      unit: UV index
+      dtype: float
+      sensor: SI1145
+
+SPOD_V2.0:
+  date: 2026-07-13
+  changelog: Standardized the output to match the YPOD V4.2.0 layout; added
+    RETIGO fields, monitor identity, firmware version, and default axis ranges.
+  SD_fileinfo:
+    FileName: SPODID_YYYY_MM_dd
+    FileType: .txt
+  Uncalibrated:
+    DateTime:
+      unit: timestamp
+      dtype: string
+      format: "YYYY-MM-ddThh:mm:ss"
+      description: Combined date and time supplied by the SPOD real-time clock
+    EAST_LONGITUDE:
+      unit: NA
+      dtype: string
+      description: Empty placeholder for RETIGO formatting
+    NORTH_LATITUDE:
+      unit: NA
+      dtype: string
+      description: Empty placeholder for RETIGO formatting
+    SPODID:
+      unit: ID
+      dtype: string
+      description: SPOD name or monitor identifier (for example, SPOD YELLOW3)
+    Firmware_Version:
+      unit: NA
+      dtype: string
+      description: Firmware version of the SPOD
+    Temperature1:
+      unit: Celsius
+      dtype: float
+      description: Converted first temperature-channel reading
+      default_axis_range: [0, 50]
+    Temperature2:
+      unit: Celsius
+      dtype: float
+      description: Converted second temperature-channel reading
+      default_axis_range: [0, 50]
+    CO2:
+      unit: ppm
+      dtype: uint16_t
+      description: Carbon dioxide reading
+      default_axis_range: [0, 5000]
+    Soil:
+      unit: ADU
+      dtype: uint16_t
+      description: Raw soil-sensor reading
+      default_axis_range: [0, 1023]
+    Visible:
+      unit: ADU
+      dtype: uint16_t
+      sensor: SI1145
+      description: Raw visible-light reading
+      default_axis_range: [0, 65535]
+    Infrared:
+      unit: ADU
+      dtype: uint16_t
+      sensor: SI1145
+      description: Raw infrared-light reading
+      default_axis_range: [0, 65535]
+    UV_Index:
+      unit: UV index
+      dtype: float
+      sensor: SI1145
+      default_axis_range: [0, 15]
