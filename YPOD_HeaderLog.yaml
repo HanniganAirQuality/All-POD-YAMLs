@@ -4365,7 +4365,7 @@ YPOD_V4_2_0:
       dtype: float
       sensor: ELT S300-3V
       description: Calibrated output, produced from an equation based on the YPODID 
-      default_axis_range: [0, 5000]
+      default_axis_range: [0, 1000]
     PM10_ENV: 
       unit: ug/m^3 #ALLEGEDLY
       dtype: uint16_t
