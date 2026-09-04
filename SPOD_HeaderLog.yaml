@@ -173,7 +173,7 @@ SPOD_V2.0:
       unit: ppm
       dtype: uint16_t
       description: Carbon dioxide reading
-      default_axis_range: [0, 2000]
+      default_axis_range: [0, 1500]
     Soil:
       unit: ADU
       dtype: uint16_t
