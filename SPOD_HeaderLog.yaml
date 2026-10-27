@@ -197,7 +197,7 @@ SPOD_V2.0:
       sensor: SI1145
       default_axis_range: [0, 15]
 
-SPOD_V3:
+SPOD_V3.0:
   date: 2026-10-14
   changelog: I think it's somewhat similar to previous, but changes were made to how printing UV
   SD_fileinfo:
