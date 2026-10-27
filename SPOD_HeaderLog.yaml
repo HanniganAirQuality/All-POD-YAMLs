@@ -272,3 +272,72 @@ SPOD_V3:
       dtype: uint16_t
       sensor: SI1145
       default_axis_range: [0, 15]
+  Uncalibrated:
+    DateTime:
+      unit: timestamp
+      dtype: string
+      format: "YYYY-MM-ddThh:mm:ss"
+      description: Combined date and time supplied by the SPOD real-time clock
+    EAST_LONGITUDE:
+      unit: NA
+      dtype: string
+      description: Empty placeholder for RETIGO formatting
+    NORTH_LATITUDE:
+      unit: NA
+      dtype: string
+      description: Empty placeholder for RETIGO formatting
+    SPODID:
+      unit: ID
+      dtype: string
+      description: SPOD name or monitor identifier (for example, SPOD YELLOW3)
+    Firmware_Version:
+      unit: NA
+      dtype: string
+      description: Firmware version of the SPOD
+    Temperature1:
+      unit: Celsius
+      dtype: float
+      description: Converted first temperature-channel reading
+      default_axis_range: [0, 50]
+    Temperature2:
+      unit: Celsius
+      dtype: float
+      description: Converted second temperature-channel reading
+      default_axis_range: [0, 50]
+    CO2_raw:
+      unit: ADU
+      dtype: uint16_t
+      description: Carbon dioxide reading
+      default_axis_range: [0, 1500]
+    CO2:
+      unit: ppm
+      dtype: uint16_t
+      description: Will be empty
+      default_axis_range: [0, 1500]
+    SoilMoisture_Raw:
+      unit: ADU
+      dtype: uint16_t
+      description: Raw soil-sensor reading
+      default_axis_range: [0, 1023]
+    SoilMoisture:
+      unit: "%"
+      dtype: uint16_t
+      description: will be empty
+      default_axis_range: [0, 100]
+    Visible:
+      unit: ADU
+      dtype: uint16_t
+      sensor: SI1145
+      description: Raw visible-light reading
+      default_axis_range: [0, 65535]
+    Infrared:
+      unit: ADU
+      dtype: uint16_t
+      sensor: SI1145
+      description: Raw infrared-light reading
+      default_axis_range: [0, 65535]
+    UV:
+      unit: ADU 
+      dtype: uint16_t
+      sensor: SI1145
+      default_axis_range: [0, 15]
