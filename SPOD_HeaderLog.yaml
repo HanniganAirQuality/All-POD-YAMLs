@@ -243,7 +243,7 @@ SPOD_V3:
     CO2:
       unit: ppm
       dtype: uint16_t
-      description: Carbon dioxide reading
+      description: Calibrated carbon dioxide reading
       default_axis_range: [0, 1500]
     SoilMoisture_Raw:
       unit: ADU
@@ -251,10 +251,10 @@ SPOD_V3:
       description: Raw soil-sensor reading
       default_axis_range: [0, 1023]
     SoilMoisture:
-      unit: ADU
+      unit: "%"
       dtype: uint16_t
-      description: Raw soil-sensor reading
-      default_axis_range: [0, 1023]
+      description: Calibrated sensor reading
+      default_axis_range: [0, 100]
     Visible:
       unit: ADU
       dtype: uint16_t
