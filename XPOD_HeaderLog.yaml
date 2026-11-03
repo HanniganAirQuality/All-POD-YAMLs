@@ -4485,6 +4485,10 @@ X_Standard:
         description: Speed in meters/second
         error_messages: 
           -99: Before satellite was reached
+      New_Speed: 
+        dtype: bool
+        sensor: undetermined
+        description: True if value was updated during this loop
       Speed_Age: 
         unit: ms
         dtype: uint32_t
