@@ -4996,6 +4996,12 @@ X_Standard:
         sensor: Figaro TGS footprint 4, heater
         adc: ADS1115
         adc_mode: single-ended
+      PID: 
+        unit: ADU
+        dtype: uint16_t
+        sensor: piD-TECH eVx 
+        adc: ADS1115
+        adc_mode: single-ended
       MQ:
         unit: ADU
         dtype: int16_t
